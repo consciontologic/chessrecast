@@ -1,0 +1,560 @@
+import 'dart:ffi';
+import 'dart:io' show Directory, File, Platform;
+
+import 'package:ffi/ffi.dart';
+import 'package:flutter/foundation.dart';
+
+import '../board/board.dart';
+import '../board/moves/generation.dart';
+import '../board/moves/move.dart';
+import '../board/moves/position.dart';
+import '../board/piece.dart';
+import '../board/pieces/piece_type.dart';
+import '../mods/enums.dart';
+import '../mods/cache.dart';
+import 'search_result.dart';
+
+// ─── Native Engine FFI Bindings ──────────────────────────────────────────────
+//
+// Wraps the C chess engine via dart:ffi.  The C library is compiled per-
+// platform: .so on Android, .dylib on iOS/macOS, .dll on Windows.
+
+/* ── C struct mirror ──────────────────────────────────────────────────────── */
+
+final class EngineResultNative extends Struct {
+  @Int32()
+  external int fromRow;
+  @Int32()
+  external int fromCol;
+  @Int32()
+  external int toRow;
+  @Int32()
+  external int toCol;
+  @Int32()
+  external int score;
+  @Int32()
+  external int depth;
+  @Int32()
+  external int nodes;
+  @Int32()
+  external int isCastling;
+  @Int32()
+  external int isEnPassant;
+  @Int32()
+  external int isPromotion;
+  @Int32()
+  external int promoType;
+}
+
+/* ── Native function typedefs ─────────────────────────────────────────────── */
+
+typedef _EngineInitNative = Void Function();
+typedef _EngineInitDart = void Function();
+
+typedef _EngineResetNative = Void Function(Int32 clearTt);
+typedef _EngineResetDart = void Function(int clearTt);
+
+typedef _EngineFindMoveNative =
+    Void Function(
+      Pointer<Utf8> fen,
+      Int32 mod,
+      Int32 timeMs,
+      Int32 maxDepth,
+      Int32 skillLevel,
+      Int32 heirWp,
+      Int32 heirBp,
+      Int32 truceActive,
+      Int64 truceFrozen,
+      Pointer<EngineResultNative> result,
+    );
+typedef _EngineFindMoveDart =
+    void Function(
+      Pointer<Utf8> fen,
+      int mod,
+      int timeMs,
+      int maxDepth,
+      int skillLevel,
+      int heirWp,
+      int heirBp,
+      int truceActive,
+      int truceFrozen,
+      Pointer<EngineResultNative> result,
+    );
+
+/* ── Library loader ───────────────────────────────────────────────────────── */
+
+/// Uses dart:io Platform instead of defaultTargetPlatform because this
+/// must work inside background isolates spawned by compute().
+DynamicLibrary _loadLibrary() {
+  if (Platform.isAndroid) return DynamicLibrary.open('libchess_engine.so');
+  if (Platform.isIOS || Platform.isMacOS) return DynamicLibrary.process();
+  if (Platform.isWindows) return DynamicLibrary.open('chess_engine.dll');
+  if (Platform.isLinux) return _loadLinuxLibrary();
+  throw UnsupportedError('Unsupported platform for native engine');
+}
+
+DynamicLibrary _loadLinuxLibrary() {
+  final overridePath = Platform.environment['CHESSRECAST_NATIVE_ENGINE_LIB'];
+  final executableDir = File(Platform.resolvedExecutable).parent.path;
+  final cwd = Directory.current.path;
+  final candidates = <String>[
+    if (overridePath != null && overridePath.isNotEmpty) overridePath,
+    '$executableDir/lib/libchess_engine.so',
+    '$cwd/build/native/linux/libchess_engine.so',
+    '$cwd/build/linux/x64/debug/bundle/lib/libchess_engine.so',
+    '$cwd/build/linux/x64/profile/bundle/lib/libchess_engine.so',
+    '$cwd/build/linux/x64/release/bundle/lib/libchess_engine.so',
+    '$cwd/libchess_engine.so',
+  ];
+  final seen = <String>{};
+
+  for (final path in candidates) {
+    if (!seen.add(path)) continue;
+    if (File(path).existsSync()) {
+      return DynamicLibrary.open(path);
+    }
+  }
+
+  throw UnsupportedError(
+    'Linux native engine library not found. Build the Linux bundle or set '
+    'CHESSRECAST_NATIVE_ENGINE_LIB to a locally built libchess_engine.so.',
+  );
+}
+
+/* ── Public API ───────────────────────────────────────────────────────────── */
+
+class NativeEngine {
+  late final DynamicLibrary _lib;
+  late final _EngineInitDart _init;
+  late final _EngineResetDart _reset;
+  late final _EngineFindMoveDart _findMove;
+
+  static NativeEngine? _instance;
+
+  factory NativeEngine() => _instance ??= NativeEngine._();
+
+  NativeEngine._() {
+    _lib = _loadLibrary();
+    _init = _lib.lookupFunction<_EngineInitNative, _EngineInitDart>(
+      'engine_init',
+    );
+    _reset = _lib.lookupFunction<_EngineResetNative, _EngineResetDart>(
+      'engine_reset',
+    );
+    _findMove = _lib.lookupFunction<_EngineFindMoveNative, _EngineFindMoveDart>(
+      'engine_find_move',
+    );
+    _init();
+  }
+
+  /// Check if native engine is available on this platform.
+  static bool get isAvailable {
+    try {
+      NativeEngine();
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  /// Reset native search state. Useful for audit/probe tooling where each
+  /// search should start from a clean transposition table.
+  void resetState({bool clearTranspositionTable = true}) {
+    _reset(clearTranspositionTable ? 1 : 0);
+  }
+
+  /// Map a [ModsEnum] to the C engine's mod integer.
+  static int _modToInt(ModsEnum mod) {
+    switch (mod) {
+      case ModsEnum.mercenary:
+        return 1;
+      case ModsEnum.heir:
+        return 2;
+      case ModsEnum.truce:
+        return 3;
+      case ModsEnum.friendlyFire:
+        return 4;
+      case ModsEnum.kingsBattle:
+        return 5;
+      case ModsEnum.saveTheQueen:
+        return 6;
+      case ModsEnum.succession:
+        return 7;
+      default:
+        return 0;
+    }
+  }
+
+  /// Compute a bitboard of squares with pieces that have moved (for Friendly Fire).
+  static int _getHasMovedBitboard(ChessBoard board) {
+    int bb = 0;
+    for (final p in board.pieces) {
+      if (p.hasMoved) {
+        bb |= 1 << (p.position.row * 8 + p.position.col);
+      }
+    }
+    return bb;
+  }
+
+  /// Find the best move synchronously.
+  ///
+  /// Call from a background isolate via [compute()] to keep the UI responsive.
+  NativeSearchResult findBestMoveSync(
+    ChessBoard board, {
+    int timeLimitMs = 1500,
+    int maxDepth = 0,
+    int skillLevel = 4,
+  }) {
+    return _findBestMoveRawSync(
+      board,
+      timeLimitMs: timeLimitMs,
+      maxDepth: maxDepth,
+      skillLevel: skillLevel,
+    );
+  }
+
+  NativeSearchResult _findBestMoveRawSync(
+    ChessBoard board, {
+    required int timeLimitMs,
+    required int maxDepth,
+    required int skillLevel,
+  }) {
+    final fen = board.toNativeFEN();
+    final mod = _modToInt(board.gameType);
+    final heirWp = board.whiteHasPromotedKing ? 1 : 0;
+    final heirBp = board.blackHasPromotedKing ? 1 : 0;
+    final truceActive = board.gameType == ModsEnum.truce
+        ? (mods.truce.isTruceActive(board) ? 1 : 0)
+        : board.gameType == ModsEnum.kingsBattle
+        ? (mods.kingsBattle.isUnlocked(board) ? 1 : 0)
+        : 0;
+    final truceFrozen = board.gameType == ModsEnum.truce
+        ? mods.truce.getTruceFrozenBitboard(board)
+        : board.gameType == ModsEnum.friendlyFire
+        ? _getHasMovedBitboard(board)
+        : 0;
+    final fenPtr = fen.toNativeUtf8();
+    final resultPtr = calloc<EngineResultNative>();
+
+    try {
+      _findMove(
+        fenPtr,
+        mod,
+        timeLimitMs,
+        maxDepth,
+        skillLevel,
+        heirWp,
+        heirBp,
+        truceActive,
+        truceFrozen,
+        resultPtr,
+      );
+      return _parseResult(resultPtr.ref, board);
+    } finally {
+      calloc.free(fenPtr);
+      calloc.free(resultPtr);
+    }
+  }
+
+  /// Async wrapper — runs the synchronous search on a background isolate.
+  Future<NativeSearchResult> findBestMove(
+    ChessBoard board, {
+    int timeLimitMs = 1500,
+    int maxDepth = 0,
+    int skillLevel = 4,
+  }) {
+    return compute(
+      _runNativeSearch,
+      _NativeSearchArgs(board, timeLimitMs, maxDepth, skillLevel),
+    );
+  }
+
+  NativeSearchResult _parseResult(EngineResultNative r, ChessBoard board) {
+    // Guard: if the engine returned MOVE_NONE (depth=0, all zeros), return null move
+    if (r.depth == 0 &&
+        r.nodes == 0 &&
+        r.fromRow == 0 &&
+        r.fromCol == 0 &&
+        r.toRow == 0 &&
+        r.toCol == 0) {
+      return NativeSearchResult(
+        bestMove: null,
+        score: r.score,
+        depth: r.depth,
+        nodesSearched: r.nodes,
+      );
+    }
+
+    final from = Position(r.fromRow, r.fromCol);
+    final to = Position(r.toRow, r.toCol);
+
+    // Identify the piece on the from-square
+    ChessPiece? piece;
+    for (final p in board.pieces) {
+      if (p.position == from && p.color == board.currentPlayer) {
+        piece = p;
+        break;
+      }
+    }
+
+    // Identify captured piece
+    ChessPiece? captured;
+    if (r.isEnPassant == 1) {
+      // En passant: the captured pawn is on the same row as 'from', same col as 'to'
+      final capPos = Position(from.row, to.col);
+      for (final p in board.pieces) {
+        if (p.position == capPos && p.color != board.currentPlayer) {
+          captured = p;
+          break;
+        }
+      }
+    } else {
+      for (final p in board.pieces) {
+        if (p.position == to && p.color != board.currentPlayer) {
+          captured = p;
+          break;
+        }
+      }
+      // Friendly Fire: captured piece may be same color
+      if (captured == null && board.gameType == ModsEnum.friendlyFire) {
+        for (final p in board.pieces) {
+          if (p.position == to &&
+              p.color == board.currentPlayer &&
+              p != piece) {
+            captured = p;
+            break;
+          }
+        }
+      }
+    }
+
+    ChessMove? move;
+    if (piece != null) {
+      if (r.isCastling == 1) {
+        move = ChessMove.castling(from: from, to: to, piece: piece);
+      } else if (r.isPromotion == 1) {
+        const promoChars = ['P', 'N', 'B', 'R', 'Q', 'K'];
+        final promoChar = promoChars[r.promoType.clamp(0, 5)];
+        move = ChessMove.promotion(
+          from: from,
+          to: to,
+          piece: piece,
+          promotionPiece: promoChar,
+          capturedPiece: captured,
+        );
+      } else if (r.isEnPassant == 1 && captured != null) {
+        move = ChessMove.enPassant(
+          from: from,
+          to: to,
+          piece: piece,
+          capturedPiece: captured,
+        );
+      } else if (captured != null) {
+        move = ChessMove.simple(
+          from: from,
+          to: to,
+          piece: piece,
+          capturedPiece: captured,
+        );
+      } else {
+        move = ChessMove.simple(from: from, to: to, piece: piece);
+      }
+
+      // Normalize to the Dart-generated legal move object when possible.
+      // This avoids false invalid-move rejections when native special flags
+      // (castling/en-passant/promotion metadata) differ from Dart annotations
+      // even though from/to squares are legal.
+      final legalMoves = board.getValidMovesFor(from);
+      ChessMove? normalized;
+      for (final candidate in legalMoves) {
+        if (candidate.to != to) continue;
+
+        if (r.isPromotion == 1) {
+          if (!candidate.isPromotion) continue;
+          final nativePromoType = r.promoType.clamp(0, 5);
+          const promoChars = ['P', 'N', 'B', 'R', 'Q', 'K'];
+          final expectedPromo = promoChars[nativePromoType];
+          if ((candidate.promotionPiece ?? '').toUpperCase() != expectedPromo) {
+            continue;
+          }
+        }
+
+        normalized = candidate;
+        break;
+      }
+
+      List<ChessMove> collectAllLegalMoves() {
+        final allLegalMoves = <ChessMove>[];
+        for (final p in board.pieces) {
+          if (p.color == board.currentPlayer) {
+            allLegalMoves.addAll(board.getValidMovesFor(p.position));
+          }
+        }
+        return allLegalMoves;
+      }
+
+      List<ChessMove>? allLegalMoves;
+
+      if (normalized == null && (r.isCastling == 1 || r.isEnPassant == 1)) {
+        allLegalMoves ??= collectAllLegalMoves();
+
+        if (r.isCastling == 1) {
+          final castleMoves = allLegalMoves.where((m) => m.isCastling).toList();
+          if (castleMoves.isNotEmpty) {
+            final sameFrom = castleMoves.where((m) => m.from == from).toList();
+            final preferredPool = sameFrom.isNotEmpty ? sameFrom : castleMoves;
+            final nativeKingside = to.col > from.col;
+            for (final c in preferredPool) {
+              if ((c.to.col > c.from.col) == nativeKingside) {
+                normalized = c;
+                break;
+              }
+            }
+            normalized ??= preferredPool.first;
+          }
+        } else if (r.isEnPassant == 1) {
+          for (final c in allLegalMoves) {
+            if (!c.isEnPassant) continue;
+            if (c.from == from && c.to.col == to.col) {
+              normalized = c;
+              break;
+            }
+          }
+          if (normalized == null) {
+            for (final c in allLegalMoves) {
+              if (c.isEnPassant) {
+                normalized = c;
+                break;
+              }
+            }
+          }
+        }
+      }
+
+      if (normalized == null) {
+        allLegalMoves ??= collectAllLegalMoves();
+
+        for (final c in allLegalMoves) {
+          if (c.from == from && c.to == to) {
+            normalized = c;
+            break;
+          }
+        }
+
+        if (normalized == null && piece.type == PieceType.pawn) {
+          for (final c in allLegalMoves) {
+            if (c.to == to && c.piece.type == PieceType.pawn) {
+              normalized = c;
+              break;
+            }
+          }
+        }
+
+        if (normalized == null &&
+            piece.type == PieceType.king &&
+            r.isCastling == 1) {
+          for (final c in allLegalMoves) {
+            if (c.isCastling) {
+              normalized = c;
+              break;
+            }
+          }
+        }
+      }
+
+      if (normalized != null) {
+        move = normalized;
+      } else {
+        final fromLegalMoves = board.getValidMovesFor(move.from);
+        final isMoveLegal = fromLegalMoves.any((m) => m == move);
+
+        if (!isMoveLegal) {
+          allLegalMoves ??= collectAllLegalMoves();
+
+          ChessMove? salvage;
+
+          // Prefer a legal move with the same destination and piece type.
+          for (final c in allLegalMoves) {
+            if (c.to == move.to && c.piece.type == move.piece.type) {
+              salvage = c;
+              break;
+            }
+          }
+
+          // If source square mapping is still useful, keep it.
+          if (salvage == null) {
+            for (final c in allLegalMoves) {
+              if (c.from == move.from) {
+                salvage = c;
+                break;
+              }
+            }
+          }
+
+          // Last resort: keep the engine moving with any legal move.
+          salvage ??= allLegalMoves.isNotEmpty ? allLegalMoves.first : null;
+          move = salvage;
+        }
+      }
+    }
+
+    return NativeSearchResult(
+      bestMove: move,
+      score: r.score,
+      depth: r.depth,
+      nodesSearched: r.nodes,
+    );
+  }
+}
+
+/* ── Isolate helper (must be top-level for compute()) ─────────────────────── */
+
+class _NativeSearchArgs {
+  final ChessBoard board;
+  final int timeMs;
+  final int maxDepth;
+  final int skillLevel;
+  const _NativeSearchArgs(
+    this.board,
+    this.timeMs,
+    this.maxDepth,
+    this.skillLevel,
+  );
+}
+
+NativeSearchResult _runNativeSearch(_NativeSearchArgs args) {
+  final engine = NativeEngine();
+  return engine.findBestMoveSync(
+    args.board,
+    timeLimitMs: args.timeMs,
+    maxDepth: args.maxDepth,
+    skillLevel: args.skillLevel,
+  );
+}
+
+/// Result from the native C engine search.
+class NativeSearchResult {
+  final ChessMove? bestMove;
+  final int score;
+  final int depth;
+  final int nodesSearched;
+
+  const NativeSearchResult({
+    this.bestMove,
+    required this.score,
+    required this.depth,
+    required this.nodesSearched,
+  });
+
+  /// Convert to the Dart engine's SearchResult for compatibility.
+  SearchResult toSearchResult() => SearchResult(
+    bestMove: bestMove,
+    score: score,
+    depth: depth,
+    nodesSearched: nodesSearched,
+  );
+
+  @override
+  String toString() =>
+      'NativeSearchResult(depth=$depth, score=$score, nodes=$nodesSearched)';
+}

@@ -1,0 +1,61 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Flutter: Mobile [Windows]",
+      "type": "dart",
+      "request": "launch",
+      "cwd": "frontend",
+      "program": "lib/main.dart",
+      "flutterMode": "debug",
+      "deviceId": "emulator-5554",
+      "env": {
+        "ANDROID_SDK_ROOT": "C:\\Users\\dev\\AppData\\Local\\Android\\sdk",
+        "PATH": "${env:PATH};C:\\Users\\dev\\AppData\\Local\\Android\\sdk\\platform-tools;C:\\Users\\dev\\AppData\\Local\\Android\\sdk\\emulator"
+      }
+    },
+    {
+      "name": "Flutter: Pixel9ProXL",
+      "type": "dart",
+      "request": "launch",
+      "cwd": "frontend",
+      "program": "lib/main.dart",
+      "flutterMode": "debug",
+      "deviceId": "emulator-5554",
+      "env": {
+        "ANDROID_SDK_ROOT": "${env:HOME}/Android/Sdk",
+        "ANDROID_HOME": "${env:HOME}/Android/Sdk",
+        "PATH": "${env:PATH}:${env:HOME}/Android/Sdk/platform-tools:${env:HOME}/Android/Sdk/emulator"
+      }
+    },
+    {
+      "name": "Flutter: Dev Fast (AOSP 35)",
+      "type": "dart",
+      "request": "launch",
+      "cwd": "frontend",
+      "program": "lib/main.dart",
+      "flutterMode": "debug",
+      "deviceId": "emulator-5554",
+      "args": ["--no-enable-impeller"],
+      "env": {
+        "ANDROID_SDK_ROOT": "${env:HOME}/Android/Sdk",
+        "ANDROID_HOME": "${env:HOME}/Android/Sdk",
+        "PATH": "${env:PATH}:${env:HOME}/Android/Sdk/platform-tools:${env:HOME}/Android/Sdk/emulator"
+      }
+    },
+    {
+      "name": "Flutter: Minimal (AOSP 36)",
+      "type": "dart",
+      "request": "launch",
+      "cwd": "frontend",
+      "program": "lib/main.dart",
+      "flutterMode": "debug",
+      "deviceId": "emulator-5554",
+      "env": {
+        "ANDROID_SDK_ROOT": "${env:HOME}/Android/Sdk",
+        "ANDROID_HOME": "${env:HOME}/Android/Sdk",
+        "PATH": "${env:PATH}:${env:HOME}/Android/Sdk/platform-tools:${env:HOME}/Android/Sdk/emulator"
+      }
+    }
+  ]
+}
