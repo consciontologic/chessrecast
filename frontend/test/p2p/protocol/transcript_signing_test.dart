@@ -84,7 +84,7 @@ void main() {
         payloadA,
         sequenceNum: 1,
       );
-      final encodedA = frameA.encode();
+      frameA.encode();
 
       // B receives A's BYE and countersigns: signs the message-to-sign over
       // the full A payload CBOR (excluding A's sig field), producing sigB.

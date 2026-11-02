@@ -53,7 +53,6 @@ class SpectatorSession {
   late final ChatModerationState _chatState;
   late final SpectatorFrameBudget _frameBudget;
   late final SpectatorLifoEvictionQueue _lifoQueue;
-  late final AccountSpectatorQuota _quota;
 
   // K_view keyed by spectator pub-key hex
   final Map<String, Uint8List> _kViews = {};
@@ -71,7 +70,6 @@ class SpectatorSession {
     _chatState = ChatModerationState();
     _frameBudget = SpectatorFrameBudget();
     _lifoQueue = SpectatorLifoEvictionQueue();
-    _quota = AccountSpectatorQuota();
   }
 
   /// Handle a spectator join request.

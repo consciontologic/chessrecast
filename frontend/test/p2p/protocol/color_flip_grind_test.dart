@@ -29,14 +29,8 @@ void main() {
 
     test('aborting after revealing r logs the abort to shadow list', () {
       final rA = rand(32);
-      final commitA = ColorFlip.computeCommit(rA);
 
-      // Simulate: peer A sends commit, then reveal
-      final commitPayload = ColorFlip.buildCommitPayload(commitA);
-      final revealPayload = ColorFlip.buildRevealPayload(rA);
-
-      // After reveal is sent, the session is aborted
-      // The revealed r should be logged to the shadow list
+      // Simulate: peer A sends commit, then reveals r and aborts.
       final sessionKey = _bytesToHex(rA);
       _abortedAfterReveal.add(sessionKey);
 

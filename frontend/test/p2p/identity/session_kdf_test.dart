@@ -33,7 +33,6 @@ void main() {
         myPrivateKey: alice.privateKey,
         theirPublicKey: bob.publicKey,
       );
-      final sessionId = DeviceFingerprint.compute(alice.publicKey).codeUnits;
       final master = SessionKdf.sessionMaster(
         ecdhSecret: ecdh,
         sessionId: ecdh, // use ECDH as session ID salt for test

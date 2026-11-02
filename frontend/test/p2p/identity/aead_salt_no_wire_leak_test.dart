@@ -61,11 +61,6 @@ void main() {
           myPrivateKey: alice.privateKey,
           theirPublicKey: bob.publicKey,
         );
-        // Bob computes shared secret from his perspective (asymmetric stub)
-        final ecdhBob = SessionKdf.sharedSecret(
-          myPrivateKey: bob.privateKey,
-          theirPublicKey: alice.publicKey,
-        );
         // In real X25519 these would be equal; for the stub they're not
         // (stub is not DH-symmetric) — but given a common session_id, both
         // could derive the same salt IF they use the same ECDH input.

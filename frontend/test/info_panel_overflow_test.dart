@@ -33,29 +33,6 @@ class _FakeController extends GetxController implements Controller {
   dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
 }
 
-Widget _wrap({required double height, required bool isTopPanel}) {
-  return GetMaterialApp(
-    home: Scaffold(
-      body: SizedBox(
-        width: 400,
-        height: height,
-        child: Column(
-          children: [
-            // This is the OLD layout: Flexible with tight fit, flex 1 of 8.
-            // Effectively constrains InfoPanel to height * 1/8.
-            Flexible(
-              flex: 1,
-              fit: FlexFit.tight,
-              child: InfoPanel(isTopPanel: isTopPanel),
-            ),
-            const Expanded(flex: 7, child: SizedBox()),
-          ],
-        ),
-      ),
-    ),
-  );
-}
-
 void main() {
   setUp(() {
     Get.put<Controller>(_FakeController());

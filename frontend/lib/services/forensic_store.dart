@@ -23,7 +23,6 @@ class ForensicStore {
   ForensicStore({required String docsDir}) : _docsDir = docsDir;
 
   Future<void> init() async {
-    final forensicDir = Directory(_forensicsPath);
     await _loadOrCreateKek();
   }
 

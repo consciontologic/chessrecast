@@ -20,9 +20,6 @@ import 'package:path/path.dart' as p;
 
 void main() {
   test('no non-legacy files import http or web_socket_channel', () async {
-    // Resolve the lib/ root (3 directories up from this test file).
-    final testFile = File(Platform.script.toFilePath());
-    // Fallback: resolve relative to the current directory (works under flutter test).
     final frontendRoot = _findFrontendRoot();
     final libRoot = Directory(p.join(frontendRoot, 'lib'));
 

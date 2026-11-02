@@ -10,7 +10,6 @@ import 'package:chessrecast/services/p2p/clock/flag_fall.dart';
 import 'package:chessrecast/services/p2p/clock/chess_clock.dart';
 import 'package:chessrecast/services/p2p/clock/monotonic_clock.dart';
 import 'package:chessrecast/services/p2p/clock/time_control.dart';
-import 'package:chessrecast/services/p2p/clock/ntp_estimator.dart';
 
 // Simulate a blitz game between two fake peers.
 // Returns true if the game ended without FLAG_FALL_DISAGREEMENT from estimator.
@@ -27,7 +26,6 @@ bool _simulateGame({
       timeControl: tc, monoClock: monoA, side: ClockSide.white);
   final clockB = ChessClock(
       timeControl: tc, monoClock: monoB, side: ClockSide.black);
-  final estA = NtpEstimator();
 
   for (int move = 0; move < maxMoves; move++) {
     // Each side "thinks" for a random duration.

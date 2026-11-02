@@ -731,7 +731,6 @@ class SessionKdf {
   ///
   /// Returns a [MasterKeyBundle] with all required per-purpose keys.
   static MasterKeyBundle deriveSubkeys(Uint8List sessionMaster) {
-    final dirs = ['a2b', 'b2a'];
     return MasterKeyBundle(
       kAeadChessA2b: _hkdf(
         inputKeyMaterial: sessionMaster,

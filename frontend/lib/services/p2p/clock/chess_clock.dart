@@ -57,9 +57,6 @@ class ChessClock {
   int _totalPauseMs = 0;
   bool _wasInTurnAtPause = false;
 
-  // Bronstein: time of turn start (to compute delay amount).
-  int _bronsteindelayUsedMs = 0;
-
   ChessClock({
     required TimeControl timeControl,
     required MonotonicClock monoClock,
@@ -80,7 +77,6 @@ class ChessClock {
   void startMyTurn() {
     if (_paused) return;
     _turnStartMonoMs = _mono.elapsedMs;
-    _bronsteindelayUsedMs = 0;
     _inTurn = true;
   }
 

@@ -37,7 +37,7 @@ void main() {
       final pt = Uint8List(8);
       final aad = Uint8List(0);
       final ct0 = enc.encrypt(pt, aad: aad);
-      final ct1 = enc.encrypt(pt, aad: aad);
+      enc.encrypt(pt, aad: aad);
       // Decrypt seq=0 first
       dec.decrypt(ct0, aad: aad, seq: 0);
       // seq=0 again should be rejected

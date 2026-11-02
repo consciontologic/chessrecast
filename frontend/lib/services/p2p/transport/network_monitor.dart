@@ -43,18 +43,15 @@ class RoamingPolicy {
       'You appear to be roaming. International data rates may apply.';
 
   bool _warned = false;
-  bool _lastRoaming = false;
 
   RoamingAction onRoamingChanged({required bool isRoaming}) {
     if (!isRoaming) {
       // Back on home network — reset guard for next roaming event.
       _warned = false;
-      _lastRoaming = false;
       return RoamingAction.suppress;
     }
     if (!_warned) {
       _warned = true;
-      _lastRoaming = true;
       return RoamingAction.warnOnce;
     }
     return RoamingAction.suppress;

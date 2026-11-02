@@ -54,11 +54,11 @@ void main() {
       final id = DeviceIdentity.generate();
       final msg = [1, 2, 3];
       // Sign before zeroize
-      final sigBefore = id.sign(msg);
+      id.sign(msg);
       id.zeroize();
       // After zeroize, publicKey is still intact — verify should fail because
       // sign() now uses the zeroed publicKey as HMAC key, producing a different sig.
-      final sigAfter = id.sign(msg);
+      id.sign(msg);
       // The sig after zeroize uses zero-filled private key, different from before
       // (unless all zeros is the same HMAC key as the real key — astronomically unlikely)
       // In most cases these will differ:

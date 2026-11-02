@@ -54,10 +54,6 @@ class SavedGamesLocal {
   // Warm-path cache — invalidated on every write so it is always consistent.
   List<SavedGame>? _listCache;
 
-  SavedGamesLocal._({bool inMemory = false, String? dbDir})
-    : _inMemory = inMemory,
-      _dbDir = dbDir;
-
   /// Production constructor — uses the app's documents directory.
   SavedGamesLocal() : _inMemory = false, _dbDir = null;
 

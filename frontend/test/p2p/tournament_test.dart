@@ -55,9 +55,6 @@ void main() {
       final s2 = TournamentSession(bracketCommitment: bc, round: 2);
       final p1 = s1.pairingsForRound(['a', 'b', 'c', 'd', 'e', 'f']);
       final p2 = s2.pairingsForRound(['a', 'b', 'c', 'd', 'e', 'f']);
-      final same = p1.map((p) => p.accountA).toList() ==
-          p2.map((p) => p.accountA).toList();
-      // With a good hash function, rounds 1 and 2 should differ.
       // We just verify pairings were generated, not that they differ.
       expect(p1.length, equals(3));
       expect(p2.length, equals(3));

@@ -35,7 +35,6 @@ void main() {
     for (final state in SessionState.values) {
       group('from $state', () {
         for (final event in allEvents) {
-          final s = sessionInState(state);
           final legal = _isLegal(state, event);
 
           if (legal) {

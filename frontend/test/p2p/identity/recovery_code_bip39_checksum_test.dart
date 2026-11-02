@@ -25,7 +25,6 @@ void main() {
       'single-word substitution from another code triggers checksum error',
       () {
         // Try multiple pairs to account for rare same-index match
-        bool checkedAtLeastOne = false;
         for (int attempt = 0; attempt < 10; attempt++) {
           final codeA = RecoveryCode.generate();
           final codeB = RecoveryCode.generate();
@@ -38,7 +37,6 @@ void main() {
               throwsA(isA<Bip39ChecksumError>()),
               reason: 'Checksum should fail when entropy bits are changed',
             );
-            checkedAtLeastOne = true;
             break;
           }
         }
