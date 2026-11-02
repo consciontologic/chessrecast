@@ -6,7 +6,7 @@ import 'dart:math';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/transport/perfect_negotiation.dart';
+import 'package:chessrecast/services/p2p/transport/perfect_negotiation.dart';
 
 void main() {
   test('1k random fingerprint pairs → no deadlock', () {

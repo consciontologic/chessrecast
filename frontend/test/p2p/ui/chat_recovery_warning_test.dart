@@ -3,7 +3,7 @@
 // Proof: ChatRecoveryWarningPolicy.requiresWarning() returns true when the
 // trigger source is an active chat session, and false for safe contexts.
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/ui/chat_recovery_warning.dart';
+import 'package:chessrecast/services/p2p/ui/chat_recovery_warning.dart';
 
 void main() {
   group('T-CHAT-001 §9.9 — Chat → recovery navigation warning', () {

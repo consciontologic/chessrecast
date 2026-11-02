@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 
@@ -444,7 +443,7 @@ class SavedGamesLocal {
   // ---------------------------------------------------------------------------
 
   Future<String> _dbPath() async {
-    if (_dbDir != null) return path_pkg.join(_dbDir!, _dbName);
+    if (_dbDir != null) return path_pkg.join(_dbDir, _dbName);
     final dir = await getApplicationDocumentsDirectory();
     return path_pkg.join(dir.path, _dbName);
   }
@@ -452,7 +451,7 @@ class SavedGamesLocal {
   /// Path of the per-install marker file (stored next to the DB, not inside it).
   Future<String> _markerPath() async {
     if (_dbDir != null) {
-      return path_pkg.join(_dbDir!, '.install_marker');
+      return path_pkg.join(_dbDir, '.install_marker');
     }
     final dir = await getApplicationDocumentsDirectory();
     return path_pkg.join(dir.path, '.install_marker');

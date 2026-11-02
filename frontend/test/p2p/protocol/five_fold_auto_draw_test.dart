@@ -3,7 +3,7 @@
 // Both engines force a draw without UX when five-fold repetition occurs.
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/clock/repetition.dart';
+import 'package:chessrecast/services/p2p/clock/repetition.dart';
 
 void main() {
   group('§11.9 five_fold_auto_draw', () {

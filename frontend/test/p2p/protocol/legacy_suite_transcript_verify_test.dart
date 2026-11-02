@@ -12,8 +12,8 @@
 import 'dart:typed_data';
 import 'package:crypto/crypto.dart';
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/identity/identity.dart';
-import '../../../lib/services/p2p/protocol/frame.dart';
+import 'package:chessrecast/services/p2p/identity/identity.dart';
+import 'package:chessrecast/services/p2p/protocol/frame.dart';
 
 /// Stub sign with HMAC-SHA256 padded to 64 bytes.
 Uint8List _sign(Uint8List key, Uint8List message) {

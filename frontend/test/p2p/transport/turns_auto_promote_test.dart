@@ -4,7 +4,7 @@
 // candidate list when the connectivity probe determines it is needed.
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/transport/turns_policy.dart';
+import 'package:chessrecast/services/p2p/transport/turns_policy.dart';
 
 void main() {
   group('TurnsAutoPromote §4.10', () {

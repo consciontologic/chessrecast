@@ -7,7 +7,7 @@
 /// The guard does NOT use DateTime.now() itself — callers provide both
 /// the current monotonic elapsed and the wall-clock delta so that this
 /// module remains wall-clock-free.
-library wall_clock_guard;
+library;
 
 /// Result of a [WallClockGuard.sample] call.
 enum WallClockSampleResult {

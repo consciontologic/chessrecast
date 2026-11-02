@@ -2,7 +2,7 @@
 import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/spectator/spectator_kdf.dart';
+import 'package:chessrecast/services/p2p/spectator/spectator_kdf.dart';
 
 void main() {
   group('SpectatorKDF §7.9.1', () {

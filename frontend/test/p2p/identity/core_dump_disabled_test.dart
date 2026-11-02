@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/identity/identity.dart';
+import 'package:chessrecast/services/p2p/identity/identity.dart';
 
 /// Core dump prevention tests (§2.7.bullet-3).
 ///

@@ -6,7 +6,7 @@
 import 'dart:typed_data';
 import 'package:crypto/crypto.dart';
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/transport/handshake_signatures.dart';
+import 'package:chessrecast/services/p2p/transport/handshake_signatures.dart';
 
 /// Stub Ed25519: HMAC-SHA256(pk, msg) padded to 64 bytes.
 Uint8List _stubSign(Uint8List pk, Uint8List msg) {

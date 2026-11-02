@@ -17,7 +17,6 @@
 /// once per session.
 library;
 
-import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:path/path.dart' as path_pkg;
@@ -140,7 +139,7 @@ class SavedGamesLocalEncrypted {
   // ---------------------------------------------------------------------------
 
   Future<String> _dbPath() async {
-    if (_dbDir != null) return path_pkg.join(_dbDir!, _dbName);
+    if (_dbDir != null) return path_pkg.join(_dbDir, _dbName);
     final dir = await getApplicationDocumentsDirectory();
     return path_pkg.join(dir.path, _dbName);
   }

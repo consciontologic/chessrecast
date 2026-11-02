@@ -4,7 +4,7 @@
 // correctly defined so the dashboard alert rules are anchored to spec.
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/transport/rtt_budgets.dart';
+import 'package:chessrecast/services/p2p/transport/rtt_budgets.dart';
 
 void main() {
   group('RttBudgets §4.4 performance', () {

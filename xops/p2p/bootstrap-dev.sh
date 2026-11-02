@@ -33,9 +33,9 @@ ok()    { echo "$LOG_PREFIX OK    $*"; }
 # ---------------------------------------------------------------------------
 # 1. Read versions from .tool-versions (if present) or use hardcoded defaults
 # ---------------------------------------------------------------------------
-FLUTTER_VERSION="${FLUTTER_VERSION:-3.38.5}"
+FLUTTER_VERSION="${FLUTTER_VERSION:-3.47.9}"
 GO_VERSION="${GO_VERSION:-1.26.2}"
-DART_VERSION="${DART_VERSION:-3.8.1}"
+DART_VERSION="${DART_VERSION:-3.13.7}"
 
 if [[ -f "$REPO_ROOT/.tool-versions" ]]; then
   while IFS=' ' read -r tool version; do

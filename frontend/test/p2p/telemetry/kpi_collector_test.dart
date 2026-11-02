@@ -12,7 +12,7 @@
 //   6.2.9  Per-mod engine KPIs
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/telemetry/p2p_kpi_collector.dart';
+import 'package:chessrecast/services/p2p/telemetry/p2p_kpi_collector.dart';
 
 void main() {
   late P2pKpiCollector kpi;

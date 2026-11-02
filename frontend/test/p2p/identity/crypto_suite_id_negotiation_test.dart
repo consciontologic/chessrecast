@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/identity/identity.dart';
+import 'package:chessrecast/services/p2p/identity/identity.dart';
 
 void main() {
   group('CryptoSuiteId — negotiation (§2.6)', () {

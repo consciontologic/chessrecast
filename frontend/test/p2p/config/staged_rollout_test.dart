@@ -7,7 +7,7 @@
 //  - canEnroll(accountId) correctly buckets into the active cohort.
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/config/staged_rollout.dart';
+import 'package:chessrecast/services/p2p/config/staged_rollout.dart';
 
 void main() {
   group('StagedRollout §6.4.1', () {

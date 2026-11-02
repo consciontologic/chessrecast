@@ -4,7 +4,7 @@
 // Proof: SecureStoragePolicy enforces StorageTier.tee as the minimum
 // production tier, and correctly classifies hardware vs software tiers.
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/identity/secure_storage_policy.dart';
+import 'package:chessrecast/services/p2p/identity/secure_storage_policy.dart';
 
 void main() {
   group('T-D-001 §9.4 — Hardware-backed key storage policy', () {

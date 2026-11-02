@@ -2,7 +2,7 @@
 library;
 
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/ui/social_engineering_detector.dart';
+import 'package:chessrecast/services/p2p/ui/social_engineering_detector.dart';
 
 void main() {
   group('§14.6 — URL shortener detection', () {

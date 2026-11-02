@@ -22,8 +22,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:chessrecast/board/board.dart';
 import 'package:chessrecast/board/moves/generation.dart';
 import 'package:chessrecast/board/moves/position.dart';
-import 'package:chessrecast/board/piece.dart'; // ChessPiece
-import 'package:chessrecast/board/pieces/piece_color.dart';
+// ChessPiece
 import 'package:chessrecast/mods/enums.dart';
 import 'package:chessrecast/services/p2p/protocol/engine_replay_version.dart';
 

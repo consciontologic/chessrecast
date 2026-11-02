@@ -4,7 +4,7 @@
 // deterministic, and a non-empty list when any PrngOrigin value is present.
 // isCleanMove() rejects non-UCI strings and out-of-range evals.
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/replay_purity.dart';
+import 'package:chessrecast/services/p2p/replay_purity.dart';
 
 void main() {
   group('T-P-007 §9.7 — No PRNG in replay path', () {

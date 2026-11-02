@@ -3,7 +3,7 @@
 // Already-processed seq values must be silently re-acked (never re-applied).
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/protocol/resync_protocol.dart';
+import 'package:chessrecast/services/p2p/protocol/resync_protocol.dart';
 
 void main() {
   group('Move idempotency §4.6', () {

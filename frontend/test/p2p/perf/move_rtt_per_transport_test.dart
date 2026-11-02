@@ -26,7 +26,7 @@ void main() {
           .toList();
     });
 
-    Map<String, dynamic> _leaf(String id) {
+    Map<String, dynamic> leaf(String id) {
       return rttLeaves.firstWhere(
         (l) => l['id'] == id,
         orElse: () => fail('leaf $id not found'),
@@ -34,15 +34,15 @@ void main() {
     }
 
     test('LTE P50 cap is 120 ms', () {
-      expect(_leaf('perf.move_rtt_lte_p50_ms')['cap'], equals(120));
+      expect(leaf('perf.move_rtt_lte_p50_ms')['cap'], equals(120));
     });
 
     test('LTE P99 cap is 250 ms', () {
-      expect(_leaf('perf.move_rtt_lte_p99_ms')['cap'], equals(250));
+      expect(leaf('perf.move_rtt_lte_p99_ms')['cap'], equals(250));
     });
 
     test('WiFi P99 cap is 80 ms', () {
-      expect(_leaf('perf.move_rtt_wifi_p99_ms')['cap'], equals(80));
+      expect(leaf('perf.move_rtt_wifi_p99_ms')['cap'], equals(80));
     });
 
     test('all four RTT leaves are present', () {
@@ -50,8 +50,8 @@ void main() {
     });
 
     test('P50 < P99 on LTE', () {
-      final p50 = (_leaf('perf.move_rtt_lte_p50_ms')['cap'] as num).toDouble();
-      final p99 = (_leaf('perf.move_rtt_lte_p99_ms')['cap'] as num).toDouble();
+      final p50 = (leaf('perf.move_rtt_lte_p50_ms')['cap'] as num).toDouble();
+      final p99 = (leaf('perf.move_rtt_lte_p99_ms')['cap'] as num).toDouble();
       expect(p50, lessThan(p99));
     });
 

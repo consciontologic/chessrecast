@@ -1,7 +1,7 @@
 // §7.9.8 tournament chat default mute proof test.
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/spectator/spectator_chat.dart';
+import 'package:chessrecast/services/p2p/spectator/spectator_chat.dart';
 
 void main() {
   group('GameChatPolicy tournament lockdown §7.9.8', () {

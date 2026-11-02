@@ -4,7 +4,7 @@
 // channel with artificial packet loss, verifying that resync completes.
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/protocol/resync_protocol.dart';
+import 'package:chessrecast/services/p2p/protocol/resync_protocol.dart';
 
 void main() {
   group('ResyncProtocol §4.6 synthetic (L5)', () {
@@ -23,7 +23,7 @@ void main() {
         lastProcessedSeq: 7,
       );
       // B sends its SYNC_REQ to A.
-      final bReq = peerB.syncReq!;
+      final bReq = peerB.syncReq;
       final resolution = peerA.resolve(bReq);
       // A must replay its 3 unacked moves.
       expect(resolution.action, equals(ResyncAction.replayUnackedMoves));
@@ -41,7 +41,7 @@ void main() {
         myLastAckedRemoteSeq: 5,
         myStateHashAtLastAckedPly: 'hash_5',
       );
-      final resolution = peerA.resolve(peerB.syncReq!);
+      final resolution = peerA.resolve(peerB.syncReq);
       expect(resolution.action, equals(ResyncAction.continueFromSeq));
     });
   });

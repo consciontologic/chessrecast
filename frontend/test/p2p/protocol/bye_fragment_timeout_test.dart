@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/protocol/frame.dart';
+import 'package:chessrecast/services/p2p/protocol/frame.dart';
 
 // Simulates the 30-second BYE fragment reassembly timeout.
 class FragmentReassembler {

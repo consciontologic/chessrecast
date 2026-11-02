@@ -1,7 +1,7 @@
 // §7.9.7 chat report proof test (Dart side).
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/spectator/spectator_chat_extended.dart';
+import 'package:chessrecast/services/p2p/spectator/spectator_chat_extended.dart';
 
 void main() {
   group('ChatReportManager §7.9.7', () {

@@ -3,7 +3,7 @@
 // Proof: evaluateAgeGate() returns blocked for users under 13, allowed for
 // users ≥ 13, and undisclosed for invalid inputs.
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/ui/age_gate.dart';
+import 'package:chessrecast/services/p2p/ui/age_gate.dart';
 
 void main() {
   // Fixed reference date for all tests.

@@ -1,6 +1,5 @@
-import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/protocol/frame.dart';
+import 'package:chessrecast/services/p2p/protocol/frame.dart';
 
 // Helper: capabilities set that includes takeback.
 Map<String, dynamic> _capsWith({bool takeback = false}) {

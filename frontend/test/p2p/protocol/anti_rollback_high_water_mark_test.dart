@@ -10,7 +10,7 @@
 // that test guards key-version enrollment; THIS test guards engine-version
 // downgrade detection across P2P sessions.
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/protocol/engine_replay_hwm.dart';
+import 'package:chessrecast/services/p2p/protocol/engine_replay_hwm.dart';
 
 void main() {
   group('T-P-HWM-001 §12.5 — engine replay version high-water-mark', () {

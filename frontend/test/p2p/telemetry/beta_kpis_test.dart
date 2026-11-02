@@ -1,7 +1,7 @@
 // §6.5 Quality attribute proof tests (performance, stability, reliability).
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/telemetry/beta_kpis.dart';
+import 'package:chessrecast/services/p2p/telemetry/beta_kpis.dart';
 
 void main() {
   // §6.5.1 Performance

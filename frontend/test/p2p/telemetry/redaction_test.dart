@@ -9,7 +9,7 @@
 //  - Opt-in state can be toggled and is respected immediately.
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/telemetry/crash_reporter.dart';
+import 'package:chessrecast/services/p2p/telemetry/crash_reporter.dart';
 
 void main() {
   group('CrashReporter §6.1 opt-in and PII redaction', () {

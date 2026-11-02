@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart' show ScrollCacheExtent;
 import 'package:get/get.dart';
 import '../mods/enums.dart';
 import '../management/options.dart';
@@ -52,7 +53,7 @@ class GameModSelection extends StatelessWidget {
                     mainAxisSpacing: 12,
                   ),
                   itemCount: ModsEnum.values.length,
-                  cacheExtent: 500,
+                  scrollCacheExtent: const ScrollCacheExtent.pixels(500),
                   itemBuilder: (context, index) {
                     final gameType = ModsEnum.values[index];
                     return _GameModCard(

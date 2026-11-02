@@ -9,7 +9,7 @@
 ///     [ResumeResult.pauseBudgetExceeded].
 ///
 /// §11.7 — No DateTime usage; all elapsed time comes from [MonotonicClock].
-library chess_clock;
+library;
 
 import 'monotonic_clock.dart';
 import 'time_control.dart';

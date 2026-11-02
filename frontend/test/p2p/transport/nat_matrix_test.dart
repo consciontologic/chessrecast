@@ -6,7 +6,7 @@
 //   cone × any            → direct or srflx sufficient
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/transport/nat_matrix.dart';
+import 'package:chessrecast/services/p2p/transport/nat_matrix.dart';
 
 void main() {
   group('NatMatrix §4.1', () {

@@ -4,7 +4,7 @@
 // validator rejects frames that exceed the cap.
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/transport/frame_constants.dart';
+import 'package:chessrecast/services/p2p/transport/frame_constants.dart';
 
 void main() {
   group('FrameConstants §4.2 size cap', () {

@@ -3,7 +3,7 @@
 // KAT vectors against synthetic clock skew.
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/clock/ntp_estimator.dart';
+import 'package:chessrecast/services/p2p/clock/ntp_estimator.dart';
 
 void main() {
   group('§11.2 ntp_estimator', () {

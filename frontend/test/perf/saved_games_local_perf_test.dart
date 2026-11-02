@@ -16,8 +16,8 @@ import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
-import '../../lib/services/saved_game.dart';
-import '../../lib/services/saved_games_local.dart';
+import 'package:chessrecast/services/saved_game.dart';
+import 'package:chessrecast/services/saved_games_local.dart';
 
 /// Build a game with a realistic payload (40-ply fenHistory, 40 moveLog entries).
 SavedGame _makeRealisticGame(int index) {

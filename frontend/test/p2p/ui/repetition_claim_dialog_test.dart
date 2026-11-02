@@ -6,7 +6,7 @@
 // Five-fold repetition is automatic (FIDE 2014+).
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/clock/repetition.dart';
+import 'package:chessrecast/services/p2p/clock/repetition.dart';
 
 void main() {
   group('§11.9 repetition_claim_dialog', () {

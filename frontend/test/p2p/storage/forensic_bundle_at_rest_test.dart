@@ -14,7 +14,7 @@ import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/forensic_store.dart';
+import 'package:chessrecast/services/forensic_store.dart';
 
 void main() {
   test('1. round-trip: write and read returns correct bytes', () async {

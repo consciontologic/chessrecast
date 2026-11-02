@@ -7,10 +7,8 @@
 /// any future game this account hosts.
 library;
 
-import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:crypto/crypto.dart';
 
 /// Represents a ban record.
 class BanRecord {

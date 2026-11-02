@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/protocol/frame.dart';
+import 'package:chessrecast/services/p2p/protocol/frame.dart';
 
 void main() {
   group('Chat rate limiter (§1.6 / §6)', () {
@@ -75,7 +75,9 @@ void main() {
     test('canSend does not modify state', () {
       final limiter = ChatRateLimiter();
       const now = 0;
-      for (int i = 0; i < 9; i++) limiter.record(now);
+      for (int i = 0; i < 9; i++) {
+        limiter.record(now);
+      }
       // Checking canSend twice should not advance usage
       final r1 = limiter.canSend(now);
       final r2 = limiter.canSend(now);

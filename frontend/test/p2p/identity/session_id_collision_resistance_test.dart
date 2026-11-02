@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/protocol/frame.dart';
+import 'package:chessrecast/services/p2p/protocol/frame.dart';
 
 void main() {
   group('Session ID collision resistance (§1.9 — §11)', () {
@@ -125,6 +125,8 @@ Uint8List _deriveBytes(int seed1, int seed2, int length) {
 
 String _toHex(Uint8List b) {
   final sb = StringBuffer();
-  for (final byte in b) sb.write(byte.toRadixString(16).padLeft(2, '0'));
+  for (final byte in b) {
+    sb.write(byte.toRadixString(16).padLeft(2, '0'));
+  }
   return sb.toString();
 }

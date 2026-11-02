@@ -6,7 +6,7 @@
 //   - not lose the pending move (it's in CBOR log)
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/transport/oem_lifecycle_policy.dart';
+import 'package:chessrecast/services/p2p/transport/oem_lifecycle_policy.dart';
 
 void main() {
   group('ForegroundServiceKilledPolicy §4.9 postmortem', () {

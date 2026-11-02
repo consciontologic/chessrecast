@@ -2,14 +2,13 @@
 //
 // Tests: clock channel frames can be reordered; non-clock frames are always
 // forwarded in-order; swapProbability=0 preserves FIFO; close() propagates.
-import 'dart:async';
 import 'dart:math' show Random;
 import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/transport/fake/fake_transport.dart';
-import '../../../lib/services/p2p/transport/fake/reordering_transport.dart';
+import 'package:chessrecast/services/p2p/transport/fake/fake_transport.dart';
+import 'package:chessrecast/services/p2p/transport/fake/reordering_transport.dart';
 
 Future<bool> _waitFor(bool Function() cond, {int maxMs = 500}) async {
   final deadline = DateTime.now().add(Duration(milliseconds: maxMs));

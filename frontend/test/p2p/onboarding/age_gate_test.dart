@@ -5,12 +5,12 @@
 library;
 
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/ui/age_gate.dart';
+import 'package:chessrecast/services/p2p/ui/age_gate.dart';
 
 void main() {
   // Fixed reference date for reproducibility.
   final refDate = DateTime(2025, 9, 1);
-  DateTime Function() today = () => refDate;
+  DateTime today() => refDate;
 
   group('§14.4 — Age gate onboarding flow', () {
     test('COPPA minimum age constant is 13', () {

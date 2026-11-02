@@ -1,14 +1,14 @@
 import 'dart:math';
 import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/protocol/frame.dart';
+import 'package:chessrecast/services/p2p/protocol/frame.dart';
 
 void main() {
   group('BYE fragmentation — 600-ply game (§1.8 / §7-8)', () {
     // Build a large BYE payload representing ~600 plies of move + FEN data.
     // A real 600-ply transcript includes one FEN per ply (~70 bytes each) plus
     // UCI move strings → ~44KB total, comfortably over the 12KB threshold.
-    Uint8List _buildLargeByePayload() {
+    Uint8List buildLargeByePayload() {
       final rng = Random(42);
       final moves = <String>[];
       final fens = <String>[];
@@ -35,12 +35,12 @@ void main() {
     }
 
     test('600-ply BYE payload exceeds 12KB fragmentation threshold', () {
-      final payload = _buildLargeByePayload();
+      final payload = buildLargeByePayload();
       expect(payload.length, greaterThan(kByeFragmentThresholdBytes));
     });
 
     test('fragment returns BYE_PART payloads + final hash', () {
-      final payload = _buildLargeByePayload();
+      final payload = buildLargeByePayload();
       final parts = ByeFragmenter.fragment(payload);
 
       // All but the last part have data + idx + tot
@@ -55,7 +55,7 @@ void main() {
     });
 
     test('fragment count is within the 64-part limit', () {
-      final payload = _buildLargeByePayload();
+      final payload = buildLargeByePayload();
       final parts = ByeFragmenter.fragment(payload);
       // parts.length = N data parts + 1 hash entry
       // Data parts should be ≤ 64
@@ -64,7 +64,7 @@ void main() {
     });
 
     test('reassemble recovers the original payload bytes', () {
-      final payload = _buildLargeByePayload();
+      final payload = buildLargeByePayload();
       final parts = ByeFragmenter.fragment(payload);
 
       final hashEntry = parts.last;
@@ -100,7 +100,7 @@ void main() {
     });
 
     test('reassemble with wrong hash throws FormatException', () {
-      final payload = _buildLargeByePayload();
+      final payload = buildLargeByePayload();
       final parts = ByeFragmenter.fragment(payload);
       final dataParts = parts.where((p) => p.containsKey('data')).toList();
       final badHash = Uint8List(32)..fillRange(0, 32, 0xFF);

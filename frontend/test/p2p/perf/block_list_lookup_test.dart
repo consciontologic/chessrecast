@@ -5,7 +5,7 @@
 library;
 
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/ui/block_list.dart';
+import 'package:chessrecast/services/p2p/ui/block_list.dart';
 
 void main() {
   group('§14.7 — BlockList O(1) lookup performance', () {
@@ -31,7 +31,7 @@ void main() {
       expect(
         elapsed,
         lessThan(5000 /* µs = 5 ms */),
-        reason: 'lookup took ${elapsed}µs — expected < 5000µs',
+        reason: 'lookup took $elapsedµs — expected < 5000µs',
       );
     });
 
@@ -52,7 +52,7 @@ void main() {
         expect(
           elapsed,
           lessThan(5000),
-          reason: 'miss-lookup took ${elapsed}µs — expected < 5000µs',
+          reason: 'miss-lookup took $elapsedµs — expected < 5000µs',
         );
       },
     );

@@ -1,7 +1,7 @@
 // §6.7.3 Share-sheet integration proof test.
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/sharing/invite_share_service.dart';
+import 'package:chessrecast/services/p2p/sharing/invite_share_service.dart';
 
 // Stub adapter for testing — simulates a successful share-sheet presentation.
 class _SuccessAdapter implements ShareAdapter {

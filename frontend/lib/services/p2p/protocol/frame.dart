@@ -195,8 +195,9 @@ class _CborDecoder {
   _CborDecoder(this.data, this.pos);
 
   dynamic readValue() {
-    if (pos >= data.length)
+    if (pos >= data.length) {
       throw FormatException('Unexpected end of CBOR data');
+    }
     final b = data[pos++];
     final major = (b >> 5) & 7;
     final info = b & 0x1f;

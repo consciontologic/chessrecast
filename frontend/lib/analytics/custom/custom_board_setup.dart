@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart' show ScrollCacheExtent;
 import 'package:get/get.dart';
 import '../../board/utils/exporter.dart';
 import '../../constants.dart';
@@ -681,7 +682,7 @@ class _PieceList extends StatelessWidget {
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: PieceType.values.length,
-            cacheExtent: 300,
+            scrollCacheExtent: const ScrollCacheExtent.pixels(300),
             itemBuilder: (context, index) {
               final type = PieceType.values[index];
 

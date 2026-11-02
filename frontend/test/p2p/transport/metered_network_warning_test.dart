@@ -4,7 +4,7 @@
 // before starting a WebRTC session using TURN relay (high data consumer).
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/transport/network_monitor.dart';
+import 'package:chessrecast/services/p2p/transport/network_monitor.dart';
 
 void main() {
   group('MeteredNetworkPolicy §4.8', () {

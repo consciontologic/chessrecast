@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 import 'package:crypto/crypto.dart';
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/protocol/frame.dart';
+import 'package:chessrecast/services/p2p/protocol/frame.dart';
 
 /// Known-Answer Test (KAT) vectors for SessionIdDeriver.
 ///
@@ -65,7 +65,9 @@ Uint8List _hexToBytes(String hex) {
 
 String _bytesToHex(Uint8List bytes) {
   final sb = StringBuffer();
-  for (final b in bytes) sb.write(b.toRadixString(16).padLeft(2, '0'));
+  for (final b in bytes) {
+    sb.write(b.toRadixString(16).padLeft(2, '0'));
+  }
   return sb.toString();
 }
 

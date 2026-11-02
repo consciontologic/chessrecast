@@ -8,7 +8,6 @@
 //   3. updates its label when the state prop changes.
 
 import 'package:flutter/material.dart';
-import 'package:flutter/semantics.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:chessrecast/ui/p2p_connection_state.dart';
 
@@ -53,7 +52,7 @@ void main() {
           ),
         );
         expect(
-          node.hasFlag(SemanticsFlag.isLiveRegion),
+          node.flagsCollection.isLiveRegion,
           isTrue,
           reason:
               'liveRegion must be true so VoiceOver/TalkBack announces changes',

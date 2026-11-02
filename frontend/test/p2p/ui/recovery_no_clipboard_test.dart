@@ -3,7 +3,7 @@
 // Proof: ClipboardPolicy.recoveryScreen has allowPaste=false and allowCopy=false.
 // isRestricted returns true for the recovery screen policy.
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/identity/recovery_screen_policy.dart';
+import 'package:chessrecast/services/p2p/identity/recovery_screen_policy.dart';
 
 void main() {
   group('T-D-006b §9.9 — Recovery screen: clipboard disabled', () {

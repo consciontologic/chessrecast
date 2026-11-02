@@ -13,8 +13,8 @@ library;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
-import '../../lib/services/saved_game.dart';
-import '../../lib/services/saved_games_local.dart';
+import 'package:chessrecast/services/saved_game.dart';
+import 'package:chessrecast/services/saved_games_local.dart';
 
 SavedGame makeGame(String id) => SavedGame(
       id: id,

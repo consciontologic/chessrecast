@@ -3,7 +3,7 @@
 // Proof: evaluateHandle() returns possibleImpersonation for handles resembling
 // protected patterns, and safe for ordinary handles.
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/ui/handle_impersonation.dart';
+import 'package:chessrecast/services/p2p/ui/handle_impersonation.dart';
 
 void main() {
   group('T-HDL-001 §9.10 — Handle impersonation detection', () {

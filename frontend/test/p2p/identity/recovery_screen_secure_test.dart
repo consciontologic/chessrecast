@@ -3,7 +3,7 @@
 // Proof: ScreenSecurityPolicy.recoveryScreen has screenshotsDisabled=true and
 // useSecureKeyboard=true; assertRecoveryRequirements() enforces both.
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/identity/recovery_screen_policy.dart';
+import 'package:chessrecast/services/p2p/identity/recovery_screen_policy.dart';
 
 void main() {
   group('T-D-006 §9.9 — Recovery screen security policy', () {

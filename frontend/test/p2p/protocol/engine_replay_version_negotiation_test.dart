@@ -3,7 +3,7 @@
 // Proof: matching versions succeed; mismatches throw EngineVersionMismatchError
 // carrying both local and remote versions; kEngineReplayVersion == 1.
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/protocol/engine_replay_version.dart';
+import 'package:chessrecast/services/p2p/protocol/engine_replay_version.dart';
 
 void main() {
   group('T-P-ERV-001 §12.2 — engine_replay_version negotiation', () {

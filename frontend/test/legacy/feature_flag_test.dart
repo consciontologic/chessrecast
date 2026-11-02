@@ -8,7 +8,7 @@ library;
 
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../lib/constants.dart';
+import 'package:chessrecast/constants.dart';
 
 void main() {
   test('1. kUseLegacyBackend is false', () {

@@ -2,7 +2,7 @@
 import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../lib/services/p2p/tournament/tournament_session.dart';
+import 'package:chessrecast/services/p2p/tournament/tournament_session.dart';
 
 void main() {
   group('TournamentSession §7 bullet-3', () {

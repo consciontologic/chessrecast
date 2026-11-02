@@ -27,7 +27,7 @@
     },
     {
       "name": "characters",
-      "rootUri": "file:///home/serhatakbak/.pub-cache/hosted/pub.dev/characters-1.4.0",
+      "rootUri": "file:///home/serhatakbak/.pub-cache/hosted/pub.dev/characters-1.4.1",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -101,7 +101,7 @@
       "name": "flutter",
       "rootUri": "file:///home/serhatakbak/code/lib/flutter/packages/flutter",
       "packageUri": "lib/",
-      "languageVersion": "3.8"
+      "languageVersion": "3.11"
     },
     {
       "name": "flutter_lints",
@@ -113,7 +113,7 @@
       "name": "flutter_test",
       "rootUri": "file:///home/serhatakbak/code/lib/flutter/packages/flutter_test",
       "packageUri": "lib/",
-      "languageVersion": "3.8"
+      "languageVersion": "3.11"
     },
     {
       "name": "get",
@@ -183,19 +183,19 @@
     },
     {
       "name": "matcher",
-      "rootUri": "file:///home/serhatakbak/.pub-cache/hosted/pub.dev/matcher-0.12.17",
+      "rootUri": "file:///home/serhatakbak/.pub-cache/hosted/pub.dev/matcher-0.12.20",
       "packageUri": "lib/",
-      "languageVersion": "3.4"
+      "languageVersion": "3.10"
     },
     {
       "name": "material_color_utilities",
-      "rootUri": "file:///home/serhatakbak/.pub-cache/hosted/pub.dev/material_color_utilities-0.11.1",
+      "rootUri": "file:///home/serhatakbak/.pub-cache/hosted/pub.dev/material_color_utilities-0.13.0",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "3.5"
     },
     {
       "name": "meta",
-      "rootUri": "file:///home/serhatakbak/.pub-cache/hosted/pub.dev/meta-1.17.0",
+      "rootUri": "file:///home/serhatakbak/.pub-cache/hosted/pub.dev/meta-1.19.0",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
@@ -281,7 +281,7 @@
       "name": "sky_engine",
       "rootUri": "file:///home/serhatakbak/code/lib/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
-      "languageVersion": "3.8"
+      "languageVersion": "3.11"
     },
     {
       "name": "source_span",
@@ -363,9 +363,9 @@
     },
     {
       "name": "test_api",
-      "rootUri": "file:///home/serhatakbak/.pub-cache/hosted/pub.dev/test_api-0.7.7",
+      "rootUri": "file:///home/serhatakbak/.pub-cache/hosted/pub.dev/test_api-0.7.12",
       "packageUri": "lib/",
-      "languageVersion": "3.5"
+      "languageVersion": "3.10"
     },
     {
       "name": "tuple",
@@ -381,9 +381,9 @@
     },
     {
       "name": "vector_math",
-      "rootUri": "file:///home/serhatakbak/.pub-cache/hosted/pub.dev/vector_math-2.2.0",
+      "rootUri": "file:///home/serhatakbak/.pub-cache/hosted/pub.dev/vector_math-2.4.4",
       "packageUri": "lib/",
-      "languageVersion": "3.1"
+      "languageVersion": "3.10"
     },
     {
       "name": "vm_service",
@@ -429,8 +429,8 @@
     }
   ],
   "generator": "pub",
-  "generatorVersion": "3.10.4",
+  "generatorVersion": "3.13.7",
   "flutterRoot": "file:///home/serhatakbak/code/lib/flutter",
-  "flutterVersion": "3.38.5",
+  "flutterVersion": "3.47.9",
   "pubCache": "file:///home/serhatakbak/.pub-cache"
 }

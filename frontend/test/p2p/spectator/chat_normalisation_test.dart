@@ -1,7 +1,7 @@
 // §7.9.9 chat normalisation (NFC + BIDI strip + homoglyph) proof test.
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/spectator/spectator_chat_extended.dart';
+import 'package:chessrecast/services/p2p/spectator/spectator_chat_extended.dart';
 
 void main() {
   group('ChatSanitizer §7.9.9 normalisation', () {

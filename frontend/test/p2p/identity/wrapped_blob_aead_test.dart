@@ -1,11 +1,11 @@
 import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/identity/identity.dart';
+import 'package:chessrecast/services/p2p/identity/identity.dart';
 
 void main() {
   group('WrappedBlob — AEAD integrity (§2.4)', () {
-    Uint8List _freshKek() {
+    Uint8List freshKek() {
       final code = RecoveryCode.generate();
       return code.deriveKek(
         mKib: Argon2idStub.mMinKib,
@@ -15,7 +15,7 @@ void main() {
 
     test('correct wrap/unwrap succeeds', () {
       final key = Uint8List(32)..fillRange(0, 32, 0x42);
-      final kek = _freshKek();
+      final kek = freshKek();
       final aad = Uint8List(32)..fillRange(0, 32, 0x01);
       final blob = WrappedBlob.wrap(accountKey: key, kek: kek, aad: aad);
       expect(blob.unwrap(kek: kek, aad: aad), equals(key));
@@ -23,7 +23,7 @@ void main() {
 
     test('single bit flip in ciphertext triggers BlobIntegrityError', () {
       final key = Uint8List(32)..fillRange(0, 32, 0x42);
-      final kek = _freshKek();
+      final kek = freshKek();
       final aad = Uint8List(32)..fillRange(0, 32, 0x01);
       final encoded = WrappedBlob.wrap(
         accountKey: key,
@@ -41,7 +41,7 @@ void main() {
 
     test('wrong KEK triggers BlobIntegrityError', () {
       final key = Uint8List(32)..fillRange(0, 32, 0x55);
-      final kek = _freshKek();
+      final kek = freshKek();
       final wrongKek = Uint8List(32)..fillRange(0, 32, 0xFF);
       final aad = Uint8List(32)..fillRange(0, 32, 0x02);
       final blob = WrappedBlob.wrap(accountKey: key, kek: kek, aad: aad);
@@ -53,7 +53,7 @@ void main() {
 
     test('blob is exactly 87 bytes encoded', () {
       final key = Uint8List(32);
-      final kek = _freshKek();
+      final kek = freshKek();
       final aad = Uint8List(32);
       final encoded = WrappedBlob.wrap(
         accountKey: key,

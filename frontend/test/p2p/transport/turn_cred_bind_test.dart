@@ -6,14 +6,14 @@
 import 'dart:convert';
 import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/transport/turn_credentials.dart';
-import '../../../lib/services/p2p/transport/turn_session_binding.dart';
+import 'package:chessrecast/services/p2p/transport/turn_credentials.dart';
+import 'package:chessrecast/services/p2p/transport/turn_session_binding.dart';
 
 void main() {
   final sharedKey = Uint8List(32)..fillRange(0, 32, 0x42);
   const baseUser = 'alice-session-abc123';
 
-  TurnCredential _mint(String user, {DateTime? exp}) {
+  TurnCredential mint(String user, {DateTime? exp}) {
     return mintSessionBoundCredential(
       baseUser: user,
       sharedKey: sharedKey,
@@ -23,7 +23,7 @@ void main() {
 
   group('T-N-003 §9.1 — TURN cred HMAC-bound to session', () {
     test('correctly minted credential passes binding check', () {
-      final cred = _mint(baseUser);
+      final cred = mint(baseUser);
       final result = validateTurnSessionBinding(
         cred: cred,
         expectedBaseUser: baseUser,
@@ -33,7 +33,7 @@ void main() {
     });
 
     test('credential minted for different session is rejected (mismatchedSession)', () {
-      final cred = _mint('eve-session-xyz999');
+      final cred = mint('eve-session-xyz999');
       final result = validateTurnSessionBinding(
         cred: cred,
         expectedBaseUser: baseUser,

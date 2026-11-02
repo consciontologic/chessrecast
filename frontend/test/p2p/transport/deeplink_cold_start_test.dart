@@ -5,7 +5,7 @@
 // lose the offer even if the app has not finished launching.
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/transport/invite_state.dart';
+import 'package:chessrecast/services/p2p/transport/invite_state.dart';
 
 void main() {
   group('InviteState §4.3 deep-link cold-start', () {

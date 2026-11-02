@@ -8,7 +8,7 @@
 //   - move idempotency (already-seen seq silently re-acked)
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/protocol/resync_protocol.dart';
+import 'package:chessrecast/services/p2p/protocol/resync_protocol.dart';
 
 void main() {
   group('ResyncProtocol §4.6 trigger', () {
@@ -19,8 +19,8 @@ void main() {
         myStateHashAtLastAckedPly: 'hash_a',
       );
       expect(protocol.syncReq, isNotNull);
-      expect(protocol.syncReq!.lastSentSeq, equals(10));
-      expect(protocol.syncReq!.lastAckedRemoteSeq, equals(8));
+      expect(protocol.syncReq.lastSentSeq, equals(10));
+      expect(protocol.syncReq.lastAckedRemoteSeq, equals(8));
     });
   });
 

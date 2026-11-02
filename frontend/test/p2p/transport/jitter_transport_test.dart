@@ -3,13 +3,12 @@
 // Tests: named-factory presets exist; incoming delay is ≥ 0; delivery is
 // eventually-complete; send() passes through to inner transport; close()
 // propagates to inner.
-import 'dart:async';
 import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/transport/fake/fake_transport.dart';
-import '../../../lib/services/p2p/transport/fake/jitter_transport.dart';
+import 'package:chessrecast/services/p2p/transport/fake/fake_transport.dart';
+import 'package:chessrecast/services/p2p/transport/fake/jitter_transport.dart';
 
 /// Pump the event loop for up to [maxMs] milliseconds, checking [condition]
 /// every 5 ms.  Returns true if [condition] becomes true in time.

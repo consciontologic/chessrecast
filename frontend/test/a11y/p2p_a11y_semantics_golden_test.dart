@@ -50,11 +50,16 @@ void main() {
         ),
       );
 
-      final root =
-          tester.binding.pipelineOwner.semanticsOwner!.rootSemanticsNode!;
+      final root = tester
+          .binding
+          .renderViews
+          .first
+          .owner!
+          .semanticsOwner!
+          .rootSemanticsNode!;
       final liveRegions = _walkSemantics(
         root,
-        (n) => n.getSemanticsData().hasFlag(SemanticsFlag.isLiveRegion),
+        (n) => n.getSemanticsData().flagsCollection.isLiveRegion,
       );
 
       expect(
@@ -85,8 +90,13 @@ void main() {
           ),
         );
 
-        final root =
-            tester.binding.pipelineOwner.semanticsOwner!.rootSemanticsNode!;
+        final root = tester
+            .binding
+            .renderViews
+            .first
+            .owner!
+            .semanticsOwner!
+            .rootSemanticsNode!;
         final allNodes = _walkSemantics(root, (_) => true);
         final hasLabel = allNodes.any(
           (n) => n.getSemanticsData().label.isNotEmpty,
@@ -121,11 +131,16 @@ void main() {
         ),
       );
 
-      final root =
-          tester.binding.pipelineOwner.semanticsOwner!.rootSemanticsNode!;
+      final root = tester
+          .binding
+          .renderViews
+          .first
+          .owner!
+          .semanticsOwner!
+          .rootSemanticsNode!;
       final textFields = _walkSemantics(
         root,
-        (n) => n.getSemanticsData().hasFlag(SemanticsFlag.isTextField),
+        (n) => n.getSemanticsData().flagsCollection.isTextField,
       );
 
       expect(
@@ -174,8 +189,13 @@ void main() {
         ),
       );
 
-      final root =
-          tester.binding.pipelineOwner.semanticsOwner!.rootSemanticsNode!;
+      final root = tester
+          .binding
+          .renderViews
+          .first
+          .owner!
+          .semanticsOwner!
+          .rootSemanticsNode!;
       for (var idx = 1; idx <= 3; idx++) {
         final label = 'Word $idx';
         final nodes = _walkSemantics(

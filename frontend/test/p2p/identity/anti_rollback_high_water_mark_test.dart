@@ -3,7 +3,7 @@
 // Proof: AntiRollbackPolicy.enroll() allows strictly increasing versions and
 // throws RollbackAttemptError for equal or lower versions.
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/identity/anti_rollback.dart';
+import 'package:chessrecast/services/p2p/identity/anti_rollback.dart';
 
 void main() {
   group('T-P-011 §9.10 — Anti-rollback high-water mark', () {

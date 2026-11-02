@@ -4,7 +4,7 @@
 // credential threading, and TURNS url structure.
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/transport/ice_config.dart';
+import 'package:chessrecast/services/p2p/transport/ice_config.dart';
 
 void main() {
   group('IceConfig §4.1', () {

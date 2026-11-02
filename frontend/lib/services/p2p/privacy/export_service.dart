@@ -288,8 +288,9 @@ class ExportService {
   /// Throws [StateError] if no pending retry is available.
   Future<Uint8List> retryExport({required String passphrase}) {
     final p = _pendingPayload;
-    if (p == null)
+    if (p == null) {
       throw StateError('no pending retry; call exportArchive first');
+    }
     return exportArchive(payload: p, passphrase: passphrase);
   }
 

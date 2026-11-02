@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/protocol/frame.dart';
+import 'package:chessrecast/services/p2p/protocol/frame.dart';
 
 void main() {
   group(
@@ -18,7 +18,7 @@ void main() {
         }); // canonical MOVE payload (§4)
       });
 
-      test('encode P99 < ${p99ThresholdUs}µs over $iterations iterations', () {
+      test('encode P99 < $p99ThresholdUsµs over $iterations iterations', () {
         final frame = Frame(
           type: FrameType.move,
           sequenceNum: 1,
@@ -40,7 +40,7 @@ void main() {
 
         // ignore: avoid_print
         print(
-          'encode P99=${p99}µs median=${latencies[iterations ~/ 2]}µs over $iterations iters',
+          'encode P99=$p99µs median=${latencies[iterations ~/ 2]}µs over $iterations iters',
         );
 
         expect(
@@ -51,7 +51,7 @@ void main() {
         );
       });
 
-      test('decode P99 < ${p99ThresholdUs}µs over $iterations iterations', () {
+      test('decode P99 < $p99ThresholdUsµs over $iterations iterations', () {
         final frame = Frame(
           type: FrameType.move,
           sequenceNum: 1,
@@ -74,7 +74,7 @@ void main() {
 
         // ignore: avoid_print
         print(
-          'decode P99=${p99}µs median=${latencies[iterations ~/ 2]}µs over $iterations iters',
+          'decode P99=$p99µs median=${latencies[iterations ~/ 2]}µs over $iterations iters',
         );
 
         expect(

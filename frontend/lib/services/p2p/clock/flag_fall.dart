@@ -5,7 +5,7 @@
 /// clock values.  The opponent verifies; if their own view differs by
 /// more than [toleranceMs] ms, they respond with FLAG_FALL_DISAGREEMENT
 /// which triggers MISMATCH adjudication.
-library flag_fall;
+library;
 
 /// A local snapshot of both sides' clocks (remaining ms, signed).
 class ClockView {

@@ -1,7 +1,7 @@
 // §6.7.4 QR-code fallback proof test.
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/sharing/invite_share_service.dart';
+import 'package:chessrecast/services/p2p/sharing/invite_share_service.dart';
 
 void main() {
   group('QR fallback §6.7.4', () {

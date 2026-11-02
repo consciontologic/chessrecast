@@ -7,7 +7,7 @@
 /// Position identity is represented as a string hash (e.g. Zobrist key
 /// encoded as hex) for compatibility with both the native engine and the
 /// Dart-side game state.
-library repetition;
+library;
 
 /// Tracks position hash occurrences for repetition detection.
 class RepetitionTracker {

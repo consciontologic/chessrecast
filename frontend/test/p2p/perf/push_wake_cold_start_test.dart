@@ -5,7 +5,7 @@
 // that a simulated in-process handshake completes within the budget.
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/transport/app_lifecycle_policy.dart';
+import 'package:chessrecast/services/p2p/transport/app_lifecycle_policy.dart';
 
 void main() {
   group('Push wake cold-start §4.3 perf', () {
@@ -18,10 +18,10 @@ void main() {
       const signalRouteMs = 100;
       const iceGatherMs = 800;
       const dtlsHandshakeMs = 300;
-      const aead_setup_ms = 10;
+      const aeadSetupMs = 10;
       const channelOpenMs = 50;
       const total =
-          signalRouteMs + iceGatherMs + dtlsHandshakeMs + aead_setup_ms + channelOpenMs;
+          signalRouteMs + iceGatherMs + dtlsHandshakeMs + aeadSetupMs + channelOpenMs;
       expect(total, lessThan(AppLifecyclePolicy.pushWakeupP95BudgetMs));
     });
 

@@ -4,8 +4,7 @@
 // When on a metered network AND TURNS is required, we show a data usage warning.
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/transport/turns_policy.dart';
-import '../../../lib/services/p2p/transport/network_monitor.dart';
+import 'package:chessrecast/services/p2p/transport/turns_policy.dart';
 
 void main() {
   group('MeteredNetworkTurnsPrompt §4.10', () {

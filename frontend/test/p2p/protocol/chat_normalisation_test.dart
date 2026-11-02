@@ -1,7 +1,6 @@
 import 'dart:convert';
-import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/protocol/frame.dart';
+import 'package:chessrecast/services/p2p/protocol/frame.dart';
 
 // Helper: build a CHAT frame payload.
 Map<String, dynamic> _buildChatPayload(String text) {

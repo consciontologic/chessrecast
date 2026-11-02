@@ -1,6 +1,5 @@
-import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/protocol/frame.dart';
+import 'package:chessrecast/services/p2p/protocol/frame.dart';
 
 void main() {
   group('HKDF info registry (§1.9 / §12)', () {

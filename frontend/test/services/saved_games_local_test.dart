@@ -13,13 +13,12 @@
 ///    skipped gracefully without throwing.
 library;
 
-import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
-import '../../lib/services/saved_game.dart';
-import '../../lib/services/saved_games_local.dart';
+import 'package:chessrecast/services/saved_game.dart';
+import 'package:chessrecast/services/saved_games_local.dart';
 
 /// Helper: build a minimal valid SavedGame.
 SavedGame makeGame(String id, {DateTime? ts}) => SavedGame(

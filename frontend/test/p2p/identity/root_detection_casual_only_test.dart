@@ -6,7 +6,7 @@
 library;
 
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/identity/rooted_device_policy.dart';
+import 'package:chessrecast/services/p2p/identity/rooted_device_policy.dart';
 
 void main() {
   group('§14.5 — Rooted device → casual-only mode', () {

@@ -45,7 +45,7 @@ typedef _GetVersionDart = int Function();
 /// The result is cached after the first call.
 int get resolvedEngineReplayVersion => _resolvedVersion;
 
-late final int _resolvedVersion = _resolveVersion();
+final int _resolvedVersion = _resolveVersion();
 
 int _resolveVersion() {
   if (Platform.isIOS || Platform.isMacOS || Platform.isWindows) {

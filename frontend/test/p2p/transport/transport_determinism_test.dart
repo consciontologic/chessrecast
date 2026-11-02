@@ -3,16 +3,14 @@
 // Verifies that seeded transports (rng: Random(seed)) produce exactly the
 // same loss/delay pattern across two independent runs — essential for
 // reproducing test failures and for bisecting regressions.
-import 'dart:async';
 import 'dart:math' show Random;
 import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/transport/fake/fake_transport.dart';
-import '../../../lib/services/p2p/transport/fake/jitter_transport.dart';
-import '../../../lib/services/p2p/transport/fake/lossy_transport.dart';
-import '../../../lib/services/p2p/transport/fake/transport_presets.dart';
+import 'package:chessrecast/services/p2p/transport/fake/fake_transport.dart';
+import 'package:chessrecast/services/p2p/transport/fake/jitter_transport.dart';
+import 'package:chessrecast/services/p2p/transport/fake/lossy_transport.dart';
 
 // ---------------------------------------------------------------------------
 // Helpers

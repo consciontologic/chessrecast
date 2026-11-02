@@ -30,7 +30,6 @@ linter:
     # entry of kind: kpi_regression documenting the follow-up cleanup.
     avoid_dynamic_calls: true
     use_build_context_synchronously: true
-    unsafe_html: true
 
 analyzer:
   errors:
@@ -39,6 +38,14 @@ analyzer:
     # NOTE: `modes_cache.dart` intentionally uses constructors and suppresses
     # deprecated_member_use via `// ignore_for_file: deprecated_member_use`.
     deprecated_member_use: error
+  exclude:
+    - build/**
+    - android/**
+    - ios/**
+    - web/**
+    - windows/**
+    - macos/**
+    - linux/**
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options

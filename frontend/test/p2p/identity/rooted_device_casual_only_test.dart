@@ -4,7 +4,7 @@
 // devices and unrestricted for clean devices.  allowsRatedGames() blocks rated
 // starts on rooted devices.
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/identity/rooted_device_policy.dart';
+import 'package:chessrecast/services/p2p/identity/rooted_device_policy.dart';
 
 void main() {
   group('T-N-009 §9.9 — Rooted device → casual-only mode', () {

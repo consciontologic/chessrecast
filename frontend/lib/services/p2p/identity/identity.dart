@@ -594,7 +594,9 @@ class WrappedBlob {
     final encInput = [...s, ...aad, 0x01];
     final keystream = Uint8List.fromList(hmacKey.convert(encInput).bytes);
     final ct = Uint8List(32);
-    for (int i = 0; i < 32; i++) ct[i] = accountKey[i] ^ keystream[i];
+    for (int i = 0; i < 32; i++) {
+      ct[i] = accountKey[i] ^ keystream[i];
+    }
     // Tag: HMAC-SHA256(kek, salt || aad || ct)
     final tagInput = [...s, ...aad, ...ct];
     final tag = Uint8List.fromList(hmacKey.convert(tagInput).bytes);
@@ -623,13 +625,17 @@ class WrappedBlob {
     final tagInput = [...salt, ...aad, ...ct];
     final expectedTag = Uint8List.fromList(hmacKey.convert(tagInput).bytes);
     int diff = 0;
-    for (int i = 0; i < 32; i++) diff |= tag[i] ^ expectedTag[i];
+    for (int i = 0; i < 32; i++) {
+      diff |= tag[i] ^ expectedTag[i];
+    }
     if (diff != 0) throw BlobIntegrityError();
     // Decrypt.
     final encInput = [...salt, ...aad, 0x01];
     final keystream = Uint8List.fromList(hmacKey.convert(encInput).bytes);
     final plain = Uint8List(32);
-    for (int i = 0; i < 32; i++) plain[i] = ct[i] ^ keystream[i];
+    for (int i = 0; i < 32; i++) {
+      plain[i] = ct[i] ^ keystream[i];
+    }
     return plain;
   }
 
@@ -889,7 +895,9 @@ class AeadCipher {
     final tagInput = [...nonce, ...aad, ...ct];
     final expectedTag = Uint8List.fromList(hmac.convert(tagInput).bytes);
     int diff = 0;
-    for (int i = 0; i < 32; i++) diff |= tag[i] ^ expectedTag[i];
+    for (int i = 0; i < 32; i++) {
+      diff |= tag[i] ^ expectedTag[i];
+    }
     if (diff != 0) throw AeadDecryptError();
     // Decrypt.
     final keystream = Uint8List.fromList(hmac.convert(nonce).bytes);
@@ -1023,8 +1031,9 @@ class VerifiedContacts {
     final existing = _contacts[theirKnownFingerprint];
     if (existing == null) return ContactKeyChangeResult.unknown;
     final newFingerprint = DeviceFingerprint.compute(theirPublicKey);
-    if (newFingerprint == theirKnownFingerprint)
+    if (newFingerprint == theirKnownFingerprint) {
       return ContactKeyChangeResult.same;
+    }
     return ContactKeyChangeResult.changed;
   }
 }
@@ -1076,7 +1085,9 @@ class KciAuthenticator {
   void verifyMac(Uint8List transcriptHash, Uint8List mac) {
     final expected = generateMac(transcriptHash);
     int diff = 0;
-    for (int i = 0; i < 32; i++) diff |= mac[i] ^ expected[i];
+    for (int i = 0; i < 32; i++) {
+      diff |= mac[i] ^ expected[i];
+    }
     if (diff != 0) throw KciVerifyFailedError();
   }
 }

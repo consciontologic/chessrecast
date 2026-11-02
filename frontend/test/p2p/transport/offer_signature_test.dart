@@ -6,7 +6,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'package:crypto/crypto.dart';
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/transport/offer_signature.dart';
+import 'package:chessrecast/services/p2p/transport/offer_signature.dart';
 
 /// Stub Ed25519 verify: HMAC-SHA256(pk, msg)[0..31] must match sig[0..31].
 bool _stubVerify(Uint8List pk, Uint8List msg, Uint8List sig) {

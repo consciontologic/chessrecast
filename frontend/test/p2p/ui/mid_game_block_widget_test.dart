@@ -9,7 +9,7 @@
 library;
 
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/ui/block_list.dart';
+import 'package:chessrecast/services/p2p/ui/block_list.dart';
 
 /// Minimal simulation of a peer session state machine for testing the block
 /// mid-game transition. In production, the real PeerSession would be used.

@@ -5,17 +5,16 @@
 //
 // and the documented presets from docs/p2p/P2P_TEST_PRESETS.md exist and produce
 // valid transport stacks.
-import 'dart:async';
 import 'dart:math' show Random;
 import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/transport/fake/fake_transport.dart';
-import '../../../lib/services/p2p/transport/fake/jitter_transport.dart';
-import '../../../lib/services/p2p/transport/fake/lossy_transport.dart';
-import '../../../lib/services/p2p/transport/fake/reordering_transport.dart';
-import '../../../lib/services/p2p/transport/fake/transport_presets.dart';
+import 'package:chessrecast/services/p2p/transport/fake/fake_transport.dart';
+import 'package:chessrecast/services/p2p/transport/fake/jitter_transport.dart';
+import 'package:chessrecast/services/p2p/transport/fake/lossy_transport.dart';
+import 'package:chessrecast/services/p2p/transport/fake/reordering_transport.dart';
+import 'package:chessrecast/services/p2p/transport/fake/transport_presets.dart';
 
 Future<bool> _waitFor(bool Function() cond, {int maxMs = 2000}) async {
   final deadline = DateTime.now().add(Duration(milliseconds: maxMs));

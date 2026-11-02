@@ -5,8 +5,8 @@
 // The chess clock itself is unaffected (it's on monotonic).
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/clock/monotonic_clock.dart';
-import '../../../lib/services/p2p/clock/wall_clock_guard.dart';
+import 'package:chessrecast/services/p2p/clock/monotonic_clock.dart';
+import 'package:chessrecast/services/p2p/clock/wall_clock_guard.dart';
 
 void main() {
   group('§11.7 wall_clock_jump_detection', () {

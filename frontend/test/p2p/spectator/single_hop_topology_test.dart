@@ -2,7 +2,7 @@
 import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/spectator/spectator_topology.dart';
+import 'package:chessrecast/services/p2p/spectator/spectator_topology.dart';
 
 void main() {
   group('SpectatorTopology §7.8.1 single-hop fan-out', () {

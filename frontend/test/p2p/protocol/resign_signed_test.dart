@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:crypto/crypto.dart';
-import '../../../lib/services/p2p/protocol/frame.dart';
+import 'package:chessrecast/services/p2p/protocol/frame.dart';
 
 // HMAC-SHA256 used as a Phase 1 signing stub (Phase 2 replaces with Ed25519).
 Uint8List _hmacSign(Uint8List key, Uint8List message) {
@@ -65,7 +65,9 @@ void main() {
       final m2 = resignMessageToSign(sid2, payload);
 
       int diff = 0;
-      for (int i = 0; i < 32; i++) diff |= m1[i] ^ m2[i];
+      for (int i = 0; i < 32; i++) {
+        diff |= m1[i] ^ m2[i];
+      }
       expect(diff, isNot(0));
     });
 
@@ -77,7 +79,9 @@ void main() {
       final m2 = resignMessageToSign(sessionId, payload2);
 
       int diff = 0;
-      for (int i = 0; i < 32; i++) diff |= m1[i] ^ m2[i];
+      for (int i = 0; i < 32; i++) {
+        diff |= m1[i] ^ m2[i];
+      }
       expect(diff, isNot(0));
     });
   });

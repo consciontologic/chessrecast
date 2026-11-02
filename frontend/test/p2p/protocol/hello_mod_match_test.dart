@@ -5,7 +5,7 @@
 import 'dart:typed_data';
 import 'package:crypto/crypto.dart';
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/protocol/hello_mod_validator.dart';
+import 'package:chessrecast/services/p2p/protocol/hello_mod_validator.dart';
 
 bool _stubVerify(Uint8List pk, Uint8List msg, Uint8List sig) {
   final hmac = Hmac(sha256, pk);

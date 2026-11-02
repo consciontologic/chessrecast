@@ -4,10 +4,10 @@
 // This is a logic-layer (model) test; it doesn't require a widget harness.
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/clock/chess_clock.dart';
-import '../../../lib/services/p2p/clock/monotonic_clock.dart';
-import '../../../lib/services/p2p/clock/time_control.dart';
-import '../../../lib/services/p2p/clock/ntp_estimator.dart';
+import 'package:chessrecast/services/p2p/clock/chess_clock.dart';
+import 'package:chessrecast/services/p2p/clock/monotonic_clock.dart';
+import 'package:chessrecast/services/p2p/clock/time_control.dart';
+import 'package:chessrecast/services/p2p/clock/ntp_estimator.dart';
 
 void main() {
   group('§11.4 clock_low_time_ui', () {

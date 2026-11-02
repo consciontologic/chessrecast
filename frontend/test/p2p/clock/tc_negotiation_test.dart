@@ -5,7 +5,7 @@
 // Validation in HELLO_ACK rejects invalid combinations.
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/clock/time_control.dart';
+import 'package:chessrecast/services/p2p/clock/time_control.dart';
 
 void main() {
   group('§11.1 tc_negotiation', () {

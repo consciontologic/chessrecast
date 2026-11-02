@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:crypto/crypto.dart';
-import '../../../lib/services/p2p/protocol/frame.dart';
+import 'package:chessrecast/services/p2p/protocol/frame.dart';
 
 // HMAC-SHA256 stub for Phase 1 tests (Phase 2 replaces with Ed25519).
 Uint8List _hmacSign(Uint8List key, Uint8List message) {

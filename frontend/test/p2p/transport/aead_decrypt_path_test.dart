@@ -7,7 +7,7 @@
 //   - drops with BAD_FRAME on bad CBOR
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/transport/aead_decrypt_path.dart';
+import 'package:chessrecast/services/p2p/transport/aead_decrypt_path.dart';
 
 void main() {
   group('AeadDecryptPath §4.4 integrity', () {

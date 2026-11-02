@@ -7,7 +7,7 @@
 library;
 
 import 'package:flutter_test/flutter_test.dart';
-import '../../lib/services/p2p/ui/age_gate.dart';
+import 'package:chessrecast/services/p2p/ui/age_gate.dart';
 
 void main() {
   group('§14.4 — Age gate accessibility (a11y)', () {

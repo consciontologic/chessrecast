@@ -4,7 +4,7 @@
 // session (not every time the state changes).
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/transport/network_monitor.dart';
+import 'package:chessrecast/services/p2p/transport/network_monitor.dart';
 
 void main() {
   group('RoamingPolicy §4.8', () {

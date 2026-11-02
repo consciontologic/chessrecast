@@ -5,7 +5,7 @@
 library;
 
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/ui/block_list.dart';
+import 'package:chessrecast/services/p2p/ui/block_list.dart';
 
 void main() {
   group('§14.1 — BlockList persistence (loadFrom round-trip)', () {

@@ -6,7 +6,7 @@
 // config constants rather than live network data.
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/config/beta_enrollment.dart';
+import 'package:chessrecast/services/p2p/config/beta_enrollment.dart';
 
 void main() {
   group('BetaEnrollment §6.1.2', () {

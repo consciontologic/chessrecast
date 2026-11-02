@@ -5,7 +5,7 @@
 //   clock — unordered, unreliable, max-retransmits=0
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/transport/datachannel_config.dart';
+import 'package:chessrecast/services/p2p/transport/datachannel_config.dart';
 
 void main() {
   group('DataChannelConfig §4.2', () {

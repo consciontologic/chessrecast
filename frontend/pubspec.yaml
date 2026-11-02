@@ -53,6 +53,7 @@ dependencies:
   # Cryptography (hash, HMAC for P2P protocol)
   crypto: ^3.0.3
 
+  path: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

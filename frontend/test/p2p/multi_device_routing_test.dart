@@ -2,7 +2,7 @@
 import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../lib/services/p2p/multi_device/multi_device_router.dart';
+import 'package:chessrecast/services/p2p/multi_device/multi_device_router.dart';
 
 void main() {
   group('MultiDeviceRouter §7 bullet-2', () {

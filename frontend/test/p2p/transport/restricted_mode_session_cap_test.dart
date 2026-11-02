@@ -4,7 +4,7 @@
 // sessions should be capped at maxRestrictedSessionSeconds.
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/transport/oem_lifecycle_policy.dart';
+import 'package:chessrecast/services/p2p/transport/oem_lifecycle_policy.dart';
 
 void main() {
   group('RestrictedModeSessionCap §4.9', () {

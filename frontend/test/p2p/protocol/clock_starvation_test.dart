@@ -4,7 +4,7 @@
 // using only local wall-clock readings, regardless of what the remote peer
 // sends.
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/protocol/local_move_clock.dart';
+import 'package:chessrecast/services/p2p/protocol/local_move_clock.dart';
 
 void main() {
   group('T-P-004 §9.2 — Local move clock budget enforcement', () {

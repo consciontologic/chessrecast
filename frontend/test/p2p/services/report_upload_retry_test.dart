@@ -7,7 +7,7 @@
 library;
 
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/ui/abuse_report.dart';
+import 'package:chessrecast/services/p2p/ui/abuse_report.dart';
 
 /// Minimal in-memory upload-queue for the purpose of this test.
 ///

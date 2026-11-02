@@ -12,15 +12,14 @@
 ///       state, and resuming picks up from where it left off.
 library;
 
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:path/path.dart' as p;
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
-import '../../lib/services/saved_game.dart';
-import '../../lib/services/saved_games_local.dart';
+import 'package:chessrecast/services/saved_game.dart';
+import 'package:chessrecast/services/saved_games_local.dart';
 
 /// Build a minimal valid SavedGame and serialise it to a JSON file.
 void _writeGameFile(Directory dir, String id, {int dayOffset = 0}) {

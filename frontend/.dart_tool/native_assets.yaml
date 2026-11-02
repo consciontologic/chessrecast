@@ -11,7 +11,7 @@
     "linux_x64": {
       "package:sqlite3/src/ffi/libsqlite3.g.dart": [
         "absolute",
-        "/home/serhatakbak/code/mine/chessrecast/frontend/.dart_tool/lib/libsqlite3.so"
+        "/home/serhatakbak/code/projects/chessrecast/frontend/.dart_tool/lib/libsqlite3.so"
       ]
     }
   }

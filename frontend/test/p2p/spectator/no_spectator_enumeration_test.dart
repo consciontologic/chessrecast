@@ -2,7 +2,7 @@
 import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/spectator/spectator_roster_privacy.dart';
+import 'package:chessrecast/services/p2p/spectator/spectator_roster_privacy.dart';
 
 void main() {
   group('SpectatorRosterPrivacy §7.8.5', () {

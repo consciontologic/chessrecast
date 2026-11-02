@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/protocol/frame.dart';
-import '../../../lib/services/p2p/protocol/session.dart';
+import 'package:chessrecast/services/p2p/protocol/frame.dart';
+import 'package:chessrecast/services/p2p/protocol/session.dart';
 
 void main() {
   group('Cross-session replay blocked (§1.9 — §11)', () {

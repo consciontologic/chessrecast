@@ -4,7 +4,7 @@
 // and surfaces BACKPRESSURE_DROP after 5 s.
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/transport/backpressure_controller.dart';
+import 'package:chessrecast/services/p2p/transport/backpressure_controller.dart';
 
 void main() {
   group('BackpressureController §4.2', () {

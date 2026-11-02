@@ -120,7 +120,7 @@ class ForensicStore {
     );
     final encrypter = Encrypter(AES(_kek!, mode: AESMode.gcm));
     final encrypted = encrypter.encrypt(base64.encode(plaintext), iv: iv);
-    final combined = Uint8List(_nonceBytes + encrypted.bytes.length as int);
+    final combined = Uint8List(_nonceBytes + encrypted.bytes.length);
     combined.setRange(0, _nonceBytes, iv.bytes);
     combined.setRange(_nonceBytes, combined.length, encrypted.bytes);
     return base64Url.encode(combined);

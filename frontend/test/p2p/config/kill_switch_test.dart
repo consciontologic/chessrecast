@@ -9,7 +9,7 @@
 // and that no further P2P functionality is attempted while the flag is off.
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/config/remote_config.dart';
+import 'package:chessrecast/services/p2p/config/remote_config.dart';
 
 void main() {
   group('RemoteConfigService kill-switch §6.3', () {

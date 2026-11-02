@@ -5,7 +5,7 @@
 // is mocked; this test is hermetic (L1).
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/transport/ice_config.dart';
+import 'package:chessrecast/services/p2p/transport/ice_config.dart';
 
 void main() {
   group('IceConfig §4.1 IPv6-only', () {

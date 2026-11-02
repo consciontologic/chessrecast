@@ -1,8 +1,8 @@
 // §6.7.5 Cold-start deep-link proof test.
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/onboarding/cold_start_invite.dart';
-import '../../../lib/services/p2p/onboarding/p2p_onboarding.dart';
+import 'package:chessrecast/services/p2p/onboarding/cold_start_invite.dart';
+import 'package:chessrecast/services/p2p/onboarding/p2p_onboarding.dart';
 
 ColdStartInviteFlow _makeFlow({P2pOnboardingState? onboarding}) {
   return ColdStartInviteFlow(

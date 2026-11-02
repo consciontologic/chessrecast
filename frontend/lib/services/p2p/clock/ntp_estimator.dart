@@ -15,7 +15,7 @@
 /// §11.2 desync budget:
 ///   • delay_p95 > 1 s  → [DesyncBudgetResult.clockDesyncBeyondBudget]
 ///   • |offset| > 500 ms → [DesyncBudgetResult.clockDesyncBeyondBudget]
-library ntp_estimator;
+library;
 
 /// A single NTP estimate (offset and one-way delay, both in ms).
 class NtpEstimate {

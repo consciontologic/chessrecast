@@ -6,7 +6,7 @@
 ///   fischer       – bank + increment added after each move
 ///   bronstein     – bank + delay (unused portion of delay restored to bank)
 ///   byo_yomi      – main time + overtime periods
-library time_control;
+library;
 
 /// Available time-control kinds.
 enum TcKind {

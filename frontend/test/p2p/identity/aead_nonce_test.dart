@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/identity/identity.dart';
+import 'package:chessrecast/services/p2p/identity/identity.dart';
 
 AeadCipher _makeCipher({int direction = 0}) {
   final key = Uint8List(32)..fillRange(0, 32, 0xAB);

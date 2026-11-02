@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/protocol/session.dart';
+import 'package:chessrecast/services/p2p/protocol/session.dart';
 
 void main() {
   group('Session state exhaustive transitions (§1.2)', () {
@@ -11,7 +11,7 @@ void main() {
     final allEvents = kAllSessionEvents;
 
     /// Build a session in [targetState] via the canonical path.
-    Session _sessionInState(SessionState targetState) {
+    Session sessionInState(SessionState targetState) {
       final s = Session();
       switch (targetState) {
         case SessionState.idle:
@@ -35,17 +35,17 @@ void main() {
     for (final state in SessionState.values) {
       group('from $state', () {
         for (final event in allEvents) {
-          final s = _sessionInState(state);
+          final s = sessionInState(state);
           final legal = _isLegal(state, event);
 
           if (legal) {
             test('$event is accepted (→ ${_nextState(state, event)})', () {
-              final session = _sessionInState(state);
+              final session = sessionInState(state);
               expect(() => session.transition(event), returnsNormally);
             });
           } else {
             test('$event throws ProtocolStateError', () {
-              final session = _sessionInState(state);
+              final session = sessionInState(state);
               expect(
                 () => session.transition(event),
                 throwsA(isA<ProtocolStateError>()),
@@ -70,7 +70,7 @@ void main() {
     test('can reset from every terminal state back to idle', () {
       // finished and aborted both support reset
       for (final state in [SessionState.finished, SessionState.aborted]) {
-        final s = _sessionInState(state);
+        final s = sessionInState(state);
         s.transition('reset');
         expect(s.state, SessionState.idle);
       }

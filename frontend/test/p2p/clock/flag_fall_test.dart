@@ -6,10 +6,10 @@
 //   If B disagrees by more than tolerance: FLAG_FALL_DISAGREEMENT → MISMATCH.
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/clock/flag_fall.dart';
-import '../../../lib/services/p2p/clock/chess_clock.dart';
-import '../../../lib/services/p2p/clock/monotonic_clock.dart';
-import '../../../lib/services/p2p/clock/time_control.dart';
+import 'package:chessrecast/services/p2p/clock/flag_fall.dart';
+import 'package:chessrecast/services/p2p/clock/chess_clock.dart';
+import 'package:chessrecast/services/p2p/clock/monotonic_clock.dart';
+import 'package:chessrecast/services/p2p/clock/time_control.dart';
 
 void main() {
   group('§11.4 flag_fall', () {

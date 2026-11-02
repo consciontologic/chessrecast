@@ -1,7 +1,7 @@
 // §7.10.2 spectator frame budget proof test.
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/spectator/spectator_perf.dart';
+import 'package:chessrecast/services/p2p/spectator/spectator_perf.dart';
 
 void main() {
   group('SpectatorFrameBudget §7.10.2', () {

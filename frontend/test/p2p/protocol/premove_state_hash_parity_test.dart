@@ -4,7 +4,7 @@
 // and state_hash parity is preserved.
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/clock/premove.dart';
+import 'package:chessrecast/services/p2p/clock/premove.dart';
 
 void main() {
   group('§11.8 premove_state_hash_parity', () {

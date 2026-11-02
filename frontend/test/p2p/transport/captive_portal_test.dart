@@ -4,7 +4,7 @@
 // Proof: CaptivePortalDetector.evaluate() returns reachable for HTTP 204,
 // suspectedPortal for other status codes, and networkError for null.
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/transport/captive_portal_detector.dart';
+import 'package:chessrecast/services/p2p/transport/captive_portal_detector.dart';
 
 void main() {
   const detector = CaptivePortalDetector();

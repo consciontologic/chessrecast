@@ -11,7 +11,7 @@
 /// §11.7 mandate: no `DateTime.now()` / `DateTime.timestamp()` inside
 /// `lib/services/p2p/clock/`.  All callers in this directory must obtain
 /// elapsed time exclusively through this interface.
-library monotonic_clock;
+library;
 
 /// Abstract monotonic clock interface.
 abstract class MonotonicClock {

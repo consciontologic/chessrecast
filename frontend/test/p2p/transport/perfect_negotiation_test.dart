@@ -5,7 +5,7 @@
 // The impolite peer's offer wins on simultaneous-offer collision.
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/transport/perfect_negotiation.dart';
+import 'package:chessrecast/services/p2p/transport/perfect_negotiation.dart';
 
 void main() {
   group('PerfectNegotiation §4.7 role assignment', () {

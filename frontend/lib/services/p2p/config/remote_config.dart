@@ -128,7 +128,7 @@ class RemoteConfigService {
   void acceptBlob(RemoteConfigBlob blob, List<int> sig) {
     final validCurrent = blob.verify(sig, _trustedKeyBytes);
     final validPrevious =
-        _previousKeyBytes != null && blob.verify(sig, _previousKeyBytes!);
+        _previousKeyBytes != null && blob.verify(sig, _previousKeyBytes);
 
     if (!validCurrent && !validPrevious) {
       throw const RemoteConfigSignatureError('HMAC signature mismatch');

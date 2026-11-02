@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart' show ScrollCacheExtent;
 import 'package:get/get.dart';
 import '../mods/enums.dart';
 import '../management/options.dart';
@@ -33,7 +34,7 @@ class StartPage extends StatelessWidget {
                 child: ListView.builder(
                   itemCount: ModsEnum.values.length,
                   // PERFORMANCE: Cache extent to reduce rebuilds
-                  cacheExtent: 500,
+                  scrollCacheExtent: const ScrollCacheExtent.pixels(500),
                   // PERFORMANCE: Keep repaint boundaries enabled for items
                   addRepaintBoundaries: true,
                   itemBuilder: (context, index) {

@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
-import '../../lib/services/p2p/engine_binding.dart';
-import '../../lib/services/p2p/protocol/frame.dart';
+import 'package:chessrecast/services/p2p/engine_binding.dart';
+import 'package:chessrecast/services/p2p/protocol/frame.dart';
 
 void main() {
   group('EngineBinding — legal/illegal move validation (§1.3)', () {

@@ -9,7 +9,7 @@
 //   - A service with a single key still works normally (backward compat).
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/config/remote_config.dart';
+import 'package:chessrecast/services/p2p/config/remote_config.dart';
 
 void main() {
   // Two fixed 32-byte keys for deterministic tests.

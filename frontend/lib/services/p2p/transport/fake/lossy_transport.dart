@@ -121,7 +121,7 @@ class LossyTransport implements P2PTransport {
   bool _shouldDrop(String channel) {
     if (_goodLossRate != null) {
       // Gilbert–Elliott mode.
-      final lossRate = _inBadState ? _badLossRate! : _goodLossRate!;
+      final lossRate = _inBadState ? _badLossRate! : _goodLossRate;
       final drop = _rng.nextDouble() < lossRate;
       // Advance Markov state.
       if (_inBadState) {

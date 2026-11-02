@@ -5,8 +5,8 @@
 // queued and retransmitted once the channel is re-open.
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/transport/datachannel_config.dart';
-import '../../../lib/services/p2p/transport/datachannel_reestablish.dart';
+import 'package:chessrecast/services/p2p/transport/datachannel_config.dart';
+import 'package:chessrecast/services/p2p/transport/datachannel_reestablish.dart';
 
 void main() {
   group('DataChannel re-establishment §4.7', () {

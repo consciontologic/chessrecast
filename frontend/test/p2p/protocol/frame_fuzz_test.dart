@@ -2,7 +2,7 @@ import 'dart:math';
 import 'dart:typed_data';
 import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/protocol/frame.dart';
+import 'package:chessrecast/services/p2p/protocol/frame.dart';
 
 void main() {
   group('Frame fuzz — no panics on random/malformed input (§1.1)', () {
@@ -130,9 +130,6 @@ void main() {
           mutated[byteIdx] ^= (1 << bit);
           try {
             Frame.decode(mutated);
-          } on CborFloatRejectedError {
-          } on FormatException {
-          } on ArgumentError {
           } on TypeError {
             // expected — bit flip may produce type mismatches inside Frame.decode
           } catch (e) {

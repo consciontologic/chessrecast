@@ -15,7 +15,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:path/path.dart' as p;
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
-import '../../lib/services/saved_games_local.dart';
+import 'package:chessrecast/services/saved_games_local.dart';
 
 void main() {
   setUpAll(() {

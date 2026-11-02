@@ -1,7 +1,7 @@
 // §7.10.6 host-gone UI notification proof test (Dart side).
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/spectator/spectator_perf.dart';
+import 'package:chessrecast/services/p2p/spectator/spectator_perf.dart';
 
 void main() {
   group('Host gone UI notification §7.10.6', () {

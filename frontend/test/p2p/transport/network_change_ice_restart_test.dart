@@ -5,7 +5,7 @@
 //   - denies restart (triggers teardown) when the key is older than 30 min
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/transport/ice_restart_policy.dart';
+import 'package:chessrecast/services/p2p/transport/ice_restart_policy.dart';
 
 void main() {
   group('IceRestartPolicy §4.3', () {

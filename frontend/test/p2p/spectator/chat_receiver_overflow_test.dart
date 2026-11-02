@@ -1,7 +1,7 @@
 // §7.10.4 chat receiver overflow proof test.
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/spectator/spectator_perf.dart';
+import 'package:chessrecast/services/p2p/spectator/spectator_perf.dart';
 
 void main() {
   group('SpectatorDecodeRateLimiter §7.10.4 receiver overflow', () {

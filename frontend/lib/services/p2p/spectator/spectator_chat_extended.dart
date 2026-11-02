@@ -7,10 +7,8 @@
 /// Error code: CHAT_REPORT_FILED (F-CHAT-009).
 library;
 
-import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:crypto/crypto.dart';
 
 const String kChatReportFiled = 'CHAT_REPORT_FILED';
 const String kChatReportRateLimited = 'CHAT_REPORT_RATE_LIMITED';

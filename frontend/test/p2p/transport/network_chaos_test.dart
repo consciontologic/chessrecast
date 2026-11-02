@@ -4,7 +4,7 @@
 // that the NETWORK_LOST error code is emitted after the window expires.
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/transport/network_heal_policy.dart';
+import 'package:chessrecast/services/p2p/transport/network_heal_policy.dart';
 
 void main() {
   group('NetworkHealPolicy §4.4 reliability', () {

@@ -3,7 +3,7 @@ import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/invites/invite_link_generator.dart';
+import 'package:chessrecast/services/p2p/invites/invite_link_generator.dart';
 
 void main() {
   const secret = [

@@ -5,7 +5,7 @@
 //   - does not start foreground service when no game is active
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/transport/app_lifecycle_policy.dart';
+import 'package:chessrecast/services/p2p/transport/app_lifecycle_policy.dart';
 
 void main() {
   group('AppLifecyclePolicy §4.3 Android', () {

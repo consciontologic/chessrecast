@@ -2,7 +2,7 @@
 import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/spectator/ban_list.dart';
+import 'package:chessrecast/services/p2p/spectator/ban_list.dart';
 
 void main() {
   group('SpectatorModerationSession §7.9.5 mute/kick', () {

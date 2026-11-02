@@ -14,7 +14,6 @@
 //   • Protected name pattern detection (same list as `handle_impersonation.dart`).
 library;
 
-import 'dart:convert';
 
 /// Maximum number of Unicode grapheme clusters allowed in a display name.
 const int kHandleMaxGraphemes = 32;

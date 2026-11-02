@@ -5,8 +5,8 @@
 // field invalidates authentication.
 import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
-import '../../../lib/services/p2p/protocol/engine_replay_aad.dart';
-import '../../../lib/services/p2p/protocol/engine_replay_version.dart';
+import 'package:chessrecast/services/p2p/protocol/engine_replay_aad.dart';
+import 'package:chessrecast/services/p2p/protocol/engine_replay_version.dart';
 
 void main() {
   group('T-P-AAD-001 §12.3 — MOVE n=0 AAD integrity', () {

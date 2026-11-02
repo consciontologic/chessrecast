@@ -65,8 +65,9 @@ void main(List<String> args) {
 String? _parsePathArg(List<String> args) {
   for (int i = 0; i < args.length; i++) {
     if (args[i] == '--path' && i + 1 < args.length) return args[i + 1];
-    if (args[i].startsWith('--path='))
+    if (args[i].startsWith('--path=')) {
       return args[i].substring('--path='.length);
+    }
   }
   return null;
 }

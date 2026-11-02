@@ -2,11 +2,11 @@
 import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/services/p2p/spectator/spectator_topology.dart';
-import '../../../lib/services/p2p/spectator/spectator_capacity.dart';
-import '../../../lib/services/p2p/spectator/spectator_auth.dart';
-import '../../../lib/services/p2p/spectator/spectator_heartbeat.dart';
-import '../../../lib/services/p2p/spectator/spectator_roster_privacy.dart';
+import 'package:chessrecast/services/p2p/spectator/spectator_topology.dart';
+import 'package:chessrecast/services/p2p/spectator/spectator_capacity.dart';
+import 'package:chessrecast/services/p2p/spectator/spectator_auth.dart';
+import 'package:chessrecast/services/p2p/spectator/spectator_heartbeat.dart';
+import 'package:chessrecast/services/p2p/spectator/spectator_roster_privacy.dart';
 
 void main() {
   group('Phase 7 spectator umbrella §7.1', () {

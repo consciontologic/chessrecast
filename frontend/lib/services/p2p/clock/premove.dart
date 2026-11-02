@@ -11,7 +11,7 @@
 ///   • If illegal (e.g. due to mod phase change), the premove is discarded
 ///     and [PremoveFireResult.invalidated] is returned.
 ///   • If legal, the move is returned as a fired move and the queue cleared.
-library premove;
+library;
 
 /// A move expressed as UCI source/destination squares.
 class PremoveMove {
